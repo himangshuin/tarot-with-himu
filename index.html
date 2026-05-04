@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot With Himu — Certified Astrologer | Guwahati</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e6bc;
+    --deep: #0a0612;
+    --indigo: #140d2e;
+    --violet: #1e1040;
+    --card-bg: rgba(255,255,255,0.04);
+    --border: rgba(201,168,76,0.25);
+    --text: #e8dfc8;
+    --text-dim: rgba(232,223,200,0.6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Starfield */
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 8%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 30%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 12%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 50%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 80%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 88%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 5% 55%, rgba(201,168,76,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 92% 25%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 50% 95%, rgba(201,168,76,0.4) 0%, transparent 100%);
+  }
+
+  /* Nebula bg */
+  .nebula {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(80,20,160,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 70% at 80% 80%, rgba(40,10,100,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 40% at 50% 50%, rgba(15,5,50,0.5) 0%, transparent 70%);
+  }
+
+  .page {
+    position: relative; z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* ---- HEADER ---- */
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .avatar-ring {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    background: radial-gradient(circle at 40% 40%, #2a1060, #0d0825);
+    box-shadow: 0 0 30px rgba(201,168,76,0.3), inset 0 0 20px rgba(80,20,160,0.4);
+  }
+
+  .avatar-emoji { font-size: 52px; line-height: 1; }
+
+  .orbit {
+    position: absolute; inset: -12px;
+    border: 1px dashed rgba(201,168,76,0.35);
+    border-radius: 50%;
+    animation: spin 18s linear infinite;
+  }
+  .orbit-dot {
+    position: absolute; top: -4px; left: calc(50% - 4px);
+    width: 8px; height: 8px;
+    background: var(--gold); border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+  }
+
+  .name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    text-shadow: 0 0 20px rgba(201,168,76,0.4);
+  }
+
+  .tagline {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-dim);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  .location {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 8px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* Stars rating */
+  .rating-bar {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-top: 12px;
+  }
+  .stars-row { color: var(--gold); font-size: 16px; letter-spacing: 2px; }
+  .rating-text {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 24px 0;
+    opacity: 0.5;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--gold); }
+  .divider-icon { color: var(--gold); font-size: 14px; }
+
+  /* Section label */
+  .section-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 14px;
+    opacity: 0.7;
+  }
+
+  /* CTA Button */
+  .cta-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-primary {
+    background: linear-gradient(135deg, #c9a84c, #8b6914, #c9a84c);
+    background-size: 200% 200%;
+    color: var(--deep);
+    box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    animation: shimmer 3s ease infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-primary::before {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: sweep 3s ease infinite;
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.6);
+  }
+
+  .cta-whatsapp {
+    background: rgba(37,211,102,0.12);
+    border: 1px solid rgba(37,211,102,0.4);
+    color: #6de89a;
+  }
+  .cta-whatsapp:hover {
+    background: rgba(37,211,102,0.2);
+    transform: translateY(-2px);
+  }
+
+  .cta-outline {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .cta-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    transform: translateY(-2px);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .btn-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* Service Cards Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 12px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--text);
+  }
+  .service-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.07);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .service-card .sc-icon { font-size: 26px; }
+  .service-card .sc-name {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .service-card .sc-sub {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* Reviews section */
+  .review-embed-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+
+  .gmb-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 14px;
+  }
+  .gmb-icon {
+    width: 36px; height: 36px;
+    background: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .gmb-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+  .gmb-sub { font-size: 12px; color: var(--text-dim); }
+
+  .review-carousel { position: relative; overflow: hidden; }
+  .reviews-track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  .review-item {
+    min-width: 100%;
+    padding: 0 2px;
+  }
+  .review-stars { color: var(--gold); font-size: 14px; margin-bottom: 6px; }
+  .review-text {
+    font-size: 14px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .review-author {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .review-dots {
+    display: flex; justify-content: center; gap: 6px;
+    margin-top: 14px;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .dot.active { background: var(--gold); }
+
+  .gmb-link {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+  .gmb-link:hover { opacity: 1; }
+
+  /* Free Tools */
+  .tool-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .tool-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+  }
+  .tool-tab {
+    flex: 1;
+    padding: 10px 6px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    background: transparent;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
+  }
+  .tool-tab.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .tool-content { padding: 20px; }
+
+  .tool-form { display: none; }
+  .tool-form.active { display: block; }
+
+  .tool-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 15px;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .tool-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .form-group { margin-bottom: 12px; }
+  .form-label {
+    display: block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .form-input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: var(--text-dim); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .tool-btn {
+    width: 100%;
+    padding: 13px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    color: var(--gold-light);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 4px;
+  }
+  .tool-btn:hover {
+    background: rgba(201,168,76,0.25);
+    transform: translateY(-1px);
+  }
+
+  .tool-result {
+    margin-top: 16px;
+    padding: 16px;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 3px;
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+  .tool-result.show { display: block; }
+
+  .result-headline {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .result-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-dim);
+    text-align: center;
+    font-style: italic;
+  }
+  .result-number {
+    font-size: 42px;
+    color: var(--gold-light);
+    text-align: center;
+    font-family: 'Cinzel Decorative', serif;
+    display: block;
+    margin: 8px 0;
+    text-shadow: 0 0 20px rgba(201,168,76,0.5);
+  }
+
+  /* Tarot card flip */
+  .tarot-result { text-align: center; }
+  .card-flip-wrap {
+    perspective: 600px;
+    width: 100px; height: 160px;
+    margin: 12px auto;
+    cursor: pointer;
+  }
+  .card-flip {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+  }
+  .card-flip.flipped { transform: rotateY(180deg); }
+  .card-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    border-radius: 6px;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .card-back {
+    background: radial-gradient(circle at 50% 50%, #2a1060, #0d0825);
+    font-size: 28px;
+  }
+  .card-front {
+    background: linear-gradient(135deg, #1a0840, #0d0825);
+    transform: rotateY(180deg);
+    flex-direction: column;
+    padding: 10px;
+  }
+  .card-front .c-emoji { font-size: 32px; }
+  .card-front .c-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 8px;
+    color: var(--gold);
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  /* Social Links */
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .social-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 14px 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .social-btn:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    background: rgba(201,168,76,0.07);
+  }
+  .social-btn .s-icon { font-size: 22px; }
+  .social-btn .s-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 13px;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 1px;
+  }
+  .footer-copy {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    opacity: 0.5;
+  }
+
+  /* Animations */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes shimmer {
+    0%,100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes sweep {
+    0% { left: -100%; }
+    100% { left: 200%; }
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  /* Consultation modal */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(5,2,20,0.92);
+    z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal {
+    background: var(--indigo);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    padding: 30px 24px;
+    width: 100%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.open .modal { transform: scale(1); }
+  .modal-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .modal-sub {
+    font-size: 14px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px; right: 16px;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .service-select {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    margin-bottom: 16px;
+  }
+  .svc-option {
+    padding: 10px 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-dim);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .svc-option.sel {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+  }
+  .modal-form .form-group { margin-bottom: 14px; }
+  .modal-footer { margin-top: 16px; font-size: 12px; color: var(--text-dim); text-align: center; }
+
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6de89a;
+    margin-top: 8px;
+  }
+  .live-dot {
+    width: 6px; height: 6px;
+    background: #6de89a; border-radius: 50%;
+    animation: pulse 1.5s ease infinite;
+  }
+
+  /* Compatibility meter */
+  .compat-meter {
+    margin: 12px 0;
+    height: 8px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .compat-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+    background: linear-gradient(90deg, #8b4513, #c9a84c, #6de89a);
+  }
+  .compat-label {
+    display: flex; justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+<div class="nebula"></div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="avatar-wrap">
+      <div class="avatar-ring">
+        <span class="avatar-emoji">🔮</span>
+        <div class="orbit"><div class="orbit-dot"></div></div>
+      </div>
+    </div>
+    <div class="name">Tarot With Himu</div>
+    <div class="tagline">Clarity · Healing · Empowerment</div>
+    <div class="location">📍 Guwahati, Assam · India &amp; Online</div>
+    <div class="rating-bar">
+      <span class="stars-row">★★★★★</span>
+      <span class="rating-text">Certified Astrologer</span>
+    </div>
+    <div class="live-badge"><span class="live-dot"></span> Accepting Consultations</div>
+  </div>
+
+  <!-- PRIMARY CTA -->
+  <div class="animate-in" style="animation-delay:0.1s">
+    <button class="cta-btn cta-primary" onclick="openModal()">
+      <span class="btn-icon">✨</span> Book a Consultation
+    </button>
+    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Himu!%20I%20want%20to%20book%20a%20consultation" target="_blank" class="cta-btn cta-whatsapp">
+      <span class="btn-icon">💬</span> WhatsApp Now
+    </a>
+  </div>
+
+  <div class="divider animate-in" style="animation-delay:0.2s">
+    <div class="divider-line"></div>
+    <span class="divider-icon">✦</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="animate-in" style="animation-delay:0.25s">
+    <div class="section-label">✦ Services Offered ✦</div>
+    <div class="services-grid">
+      <div class="service-card" onclick="openModal('Tarot Reading')">
+        <span class="sc-icon">🃏</span>
+        <div class="sc-name">Tarot Reading</div>
+        <div class="sc-sub">Past · Present · Future</div>
+      </div>
+      <div class="service-card" onclick="openModal('Astrology')">
+        <span class="sc-icon">♈</span>
+        <div class="sc-name">Astrology</div>
+        <div class="sc-sub">Kundli · Birth Chart</div>
+      </div>
+      <div class="service-card" onclick="openModal('Numerology')">
+        <span class="sc-icon">🔢</span>
+        <div class="sc-name">Numerology</div>
+        <div class="sc-sub">Numbers of Destiny</div>
+      </div>
+      <div class="service-card" onclick="openModal('Vastu')">
+        <span class="sc-icon">🏠</span>
+        <div class="sc-name">Vastu Shastra</div>
+        <div class="sc-sub">Space · Energy · Flow</div>
+      </div>
+      <div class="service-card" onclick="openModal('Marriage Matching')">
+        <span class="sc-icon">💑</span>
+        <div class="sc-name">Marriage Matching</div>
+        <div class="sc-sub">Kundli Milan</div>
+      </div>
+      <div class="service-card" onclick="openModal('Life Guidance')">
+        <span class="sc-icon">🌟</span>
+        <div class="sc-name">Life Guidance</div>
+        <div class="sc-sub">Career · Love · Healing</div>
+      </div>
+    </div>
+    <a href="https://tarotwithhimu.com/tarot-reading-service-packages/" target="_blank" class="cta-btn cta-outline">
+      <span class="btn-icon">📋</span> View All Packages & Pricing
+    </a>
+  </div>
+
+  <div class="divider animate-in" style="animation-delay:0.3s">
+    <div class="divider-line"></div>
+    <span class="divider-icon">✦</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- FREE TOOLS -->
+  <div class="animate-in" style="animation-delay:0.35s">
+    <div class="section-label">✦ Free Mystical Tools ✦</div>
+    <div class="tool-panel">
+      <div class="tool-tabs">
+        <button class="tool-tab active" onclick="switchTool('match')">💑 Match</button>
+        <button class="tool-tab" onclick="switchTool('name')">🔤 Name</button>
+        <button class="tool-tab" onclick="switchTool('tarot')">🃏 Tarot</button>
+        <button class="tool-tab" onclick="switchTool('num')">🔢 Number</button>
+      </div>
+      <div class="tool-content">
+
+        <!-- MATCHMAKING -->
+        <div class="tool-form active" id="tool-match">
+          <div class="tool-title">🌹 Free Matchmaking</div>
+          <div class="tool-desc">Discover your compatibility score</div>
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" id="m-name1" placeholder="Enter your full name">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Your DOB</label>
+              <input class="form-input" type="date" id="m-dob1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Zodiac</label>
+              <select class="form-input" id="m-sign1">
+                <option value="">Select</option>
+                <option>Aries ♈</option><option>Taurus ♉</option><option>Gemini ♊</option>
+                <option>Cancer ♋</option><option>Leo ♌</option><option>Virgo ♍</option>
+                <option>Libra ♎</option><option>Scorpio ♏</option><option>Sagittarius ♐</option>
+                <option>Capricorn ♑</option><option>Aquarius ♒</option><option>Pisces ♓</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Partner's Name</label>
+            <input class="form-input" type="text" id="m-name2" placeholder="Partner's full name">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Partner DOB</label>
+              <input class="form-input" type="date" id="m-dob2">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Partner Zodiac</label>
+              <select class="form-input" id="m-sign2">
+                <option value="">Select</option>
+                <option>Aries ♈</option><option>Taurus ♉</option><option>Gemini ♊</option>
+                <option>Cancer ♋</option><option>Leo ♌</option><option>Virgo ♍</option>
+                <option>Libra ♎</option><option>Scorpio ♏</option><option>Sagittarius ♐</option>
+                <option>Capricorn ♑</option><option>Aquarius ♒</option><option>Pisces ♓</option>
+              </select>
+            </div>
+          </div>
+          <button class="tool-btn" onclick="calcMatch()">✨ Reveal Compatibility</button>
+          <div class="tool-result" id="res-match">
+            <div class="result-headline" id="match-title">Cosmic Compatibility</div>
+            <span class="result-number" id="match-score"></span>
+            <div class="compat-meter"><div class="compat-fill" id="match-bar" style="width:0%"></div></div>
+            <div class="compat-label"><span>Low</span><span>Perfect</span></div>
+            <div class="result-text" id="match-text"></div>
+          </div>
+        </div>
+
+        <!-- NAME ANALYSIS -->
+        <div class="tool-form" id="tool-name">
+          <div class="tool-title">🔤 Name Analysis</div>
+          <div class="tool-desc">Numerological power of your name</div>
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input class="form-input" type="text" id="na-name" placeholder="Enter your full name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date of Birth</label>
+            <input class="form-input" type="date" id="na-dob">
+          </div>
+          <button class="tool-btn" onclick="calcName()">🔮 Analyse My Name</button>
+          <div class="tool-result" id="res-name">
+            <div class="result-headline">Your Name Vibration</div>
+            <span class="result-number" id="name-num"></span>
+            <div class="result-text" id="name-text"></div>
+          </div>
+        </div>
+
+        <!-- TAROT DRAW -->
+        <div class="tool-form" id="tool-tarot">
+          <div class="tool-title">🃏 Daily Tarot Draw</div>
+          <div class="tool-desc">Focus on your question &amp; reveal your card</div>
+          <div class="form-group">
+            <label class="form-label">Your Question (optional)</label>
+            <input class="form-input" type="text" id="tarot-q" placeholder="What is on your mind?">
+          </div>
+          <button class="tool-btn" onclick="drawTarot()">🌙 Draw Your Card</button>
+          <div class="tool-result" id="res-tarot">
+            <div class="tarot-result">
+              <div class="result-headline" id="tarot-title"></div>
+              <div class="card-flip-wrap" onclick="flipCard()">
+                <div class="card-flip" id="tarot-card">
+                  <div class="card-face card-back">🔮</div>
+                  <div class="card-face card-front">
+                    <span class="c-emoji" id="t-emoji">⭐</span>
+                    <span class="c-name" id="t-name">The Star</span>
+                  </div>
+                </div>
+              </div>
+              <div class="result-text" style="margin-top:8px; font-size:11px; color:var(--text-dim)">Tap card to reveal</div>
+              <div class="result-text" id="tarot-meaning" style="margin-top:10px; display:none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NUMEROLOGY -->
+        <div class="tool-form" id="tool-num">
+          <div class="tool-title">🔢 Life Path Number</div>
+          <div class="tool-desc">Discover your soul's journey number</div>
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input class="form-input" type="text" id="lp-name" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date of Birth</label>
+            <input class="form-input" type="date" id="lp-dob">
+          </div>
+          <button class="tool-btn" onclick="calcLifePath()">🌟 Calculate Life Path</button>
+          <div class="tool-result" id="res-num">
+            <div class="result-headline">Your Life Path Number</div>
+            <span class="result-number" id="lp-num"></span>
+            <div class="result-text" id="lp-text"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="divider animate-in" style="animation-delay:0.4s">
+    <div class="divider-line"></div>
+    <span class="divider-icon">✦</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- GOOGLE REVIEWS -->
+  <div class="animate-in" style="animation-delay:0.45s">
+    <div class="section-label">✦ What Clients Say ✦</div>
+    <div class="review-embed-box">
+      <div class="gmb-header">
+        <div class="gmb-icon">G</div>
+        <div>
+          <div class="gmb-title">Google Reviews</div>
+          <div class="gmb-sub">Tarot With Himu · Guwahati</div>
+        </div>
+        <div style="margin-left:auto; text-align:right">
+          <div style="color:var(--gold); font-size:13px;">★★★★★</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-size:10px; color:var(--text-dim)">5.0 Rating</div>
+        </div>
+      </div>
+
+      <!-- Paste your EmbedSocial / Elfsight Google Reviews widget here -->
+      <!-- <div class="elfsight-app-XXXXXXXX"></div> -->
+      <!-- Until then, animated testimonials are shown -->
+
+      <div class="review-carousel">
+        <div class="reviews-track" id="reviews-track">
+          <div class="review-item">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"I have been to many astrologers before, but the level of accuracy and intuition that Tarot With Himu has is unmatched. Every word felt personally guided."</div>
+            <div class="review-author">— Priya S., Delhi</div>
+          </div>
+          <div class="review-item">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"The tarot reading with Himu Sir was a truly spiritual journey. He answered all my questions with patience and empathy. I felt heard and understood."</div>
+            <div class="review-author">— Rahul M., Guwahati</div>
+          </div>
+          <div class="review-item">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"My first tarot reading session and I was honestly amazed by the accuracy and depth of his insights. Highly recommend to anyone seeking clarity."</div>
+            <div class="review-author">— Anjali T., Mumbai</div>
+          </div>
+          <div class="review-item">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"ধন্যবাদ! আপুনি মোক সকলো বোৰ ইমান ধুনীয়াকৈ কৈ দিয়াৰ বাবে। মই আচৰিত হৈ গৈছো — সকলো সত্য বুলি ওলাইছে।"</div>
+            <div class="review-author">— Kaberi B., Assam</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-dots" id="review-dots">
+        <div class="dot active" onclick="goReview(0)"></div>
+        <div class="dot" onclick="goReview(1)"></div>
+        <div class="dot" onclick="goReview(2)"></div>
+        <div class="dot" onclick="goReview(3)"></div>
+      </div>
+      <a href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK/review" target="_blank" class="gmb-link">
+        ★ Leave a Google Review →
+      </a>
+    </div>
+
+    <!-- Embed widget note -->
+    <div style="font-family:'Josefin Sans',sans-serif; font-size:10px; color:var(--text-dim); text-align:center; margin-top:6px; letter-spacing:1px;">
+      🔧 To embed live Google reviews, add your <a href="https://elfsight.com/google-reviews-widget/" target="_blank" style="color:var(--gold)">Elfsight</a> or <a href="https://embedsocial.com" target="_blank" style="color:var(--gold)">EmbedSocial</a> widget code above
+    </div>
+  </div>
+
+  <div class="divider animate-in" style="animation-delay:0.5s">
+    <div class="divider-line"></div>
+    <span class="divider-icon">✦</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- SOCIAL LINKS -->
+  <div class="animate-in" style="animation-delay:0.55s">
+    <div class="section-label">✦ Connect With Himu ✦</div>
+    <div class="social-grid">
+      <a href="https://tarotwithhimu.com" target="_blank" class="social-btn">
+        <span class="s-icon">🌐</span>
+        <span class="s-label">Website</span>
+      </a>
+      <a href="https://instagram.com/tarotwithhimu" target="_blank" class="social-btn">
+        <span class="s-icon">📸</span>
+        <span class="s-label">Instagram</span>
+      </a>
+      <a href="https://facebook.com/tarotwithhimu" target="_blank" class="social-btn">
+        <span class="s-icon">📘</span>
+        <span class="s-label">Facebook</span>
+      </a>
+      <a href="https://youtube.com/@tarotwithhimu" target="_blank" class="social-btn">
+        <span class="s-icon">▶️</span>
+        <span class="s-label">YouTube</span>
+      </a>
+    </div>
+    <a href="https://tarotwithhimu.com" target="_blank" class="cta-btn cta-outline">
+      <span class="btn-icon">🌐</span> Visit Full Website
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer animate-in" style="animation-delay:0.6s">
+    <div class="footer-name">✦ Tarot With Himu ✦</div>
+    <div class="footer-copy">Himangshu · Certified Astrologer · Guwahati, Assam</div>
+    <div class="footer-copy" style="margin-top:4px">© 2025 TarotWithHimu.com · All rights reserved</div>
+  </div>
+
+</div>
+
+<!-- CONSULTATION MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">Book a Session</div>
+    <div class="modal-sub">Choose your service &amp; connect with Himu</div>
+
+    <div class="section-label" style="margin-bottom:10px">Select Service</div>
+    <div class="service-select" id="svc-select">
+      <div class="svc-option" onclick="selSvc(this)">🃏 Tarot</div>
+      <div class="svc-option" onclick="selSvc(this)">♈ Astrology</div>
+      <div class="svc-option" onclick="selSvc(this)">🔢 Numerology</div>
+      <div class="svc-option" onclick="selSvc(this)">🏠 Vastu</div>
+      <div class="svc-option" onclick="selSvc(this)">💑 Matching</div>
+      <div class="svc-option" onclick="selSvc(this)">🌟 Life Guide</div>
+    </div>
+
+    <div class="modal-form">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input class="form-input" type="text" id="b-name" placeholder="Full name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone / WhatsApp</label>
+        <input class="form-input" type="tel" id="b-phone" placeholder="+91 XXXXX XXXXX">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date of Birth</label>
+        <input class="form-input" type="date" id="b-dob">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Concern</label>
+        <input class="form-input" type="text" id="b-concern" placeholder="Love · Career · Family · Health...">
+      </div>
+      <button class="tool-btn" onclick="submitBooking()" style="margin-top:8px">✨ Send Booking Request</button>
+    </div>
+    <div class="modal-footer">Online &amp; In-person available · Guwahati &amp; Worldwide</div>
+  </div>
+</div>
+
+<script>
+// ---- REVIEW CAROUSEL ----
+let curReview = 0;
+const track = document.getElementById('reviews-track');
+const dots = document.querySelectorAll('.dot');
+
+function goReview(i) {
+  curReview = i;
+  track.style.transform = `translateX(-${i * 100}%)`;
+  dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+}
+
+setInterval(() => {
+  goReview((curReview + 1) % 4);
+}, 4500);
+
+// ---- TOOL TABS ----
+function switchTool(id) {
+  document.querySelectorAll('.tool-form').forEach(f => f.classList.remove('active'));
+  document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tool-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ---- MATCHMAKING ----
+const compatMessages = [
+  {range:[85,100], title:"Twin Flames 🔥", msg:"An extraordinary cosmic bond. Your energies mirror each other beautifully — this is a rare, destined connection."},
+  {range:[70,84], title:"Soulmates ✨", msg:"Deep mutual understanding and strong attraction. A powerful, loving relationship built on trust and harmony."},
+  {range:[55,69], title:"Good Match 💛", msg:"Compatible with good potential. With communication and understanding, this relationship can flourish beautifully."},
+  {range:[40,54], title:"Moderate Match 🌙", msg:"Some differences exist but love can overcome them. Patience, understanding, and compromise will be the keys."},
+  {range:[0,39], title:"Challenging ⚡", msg:"Significant differences in energy. Not impossible, but will require deep work. Consult Himu for personalised guidance."},
+];
+
+function nameToNum(name) {
+  const map = {a:1,b:2,c:3,d:4,e:5,f:8,g:3,h:5,i:1,j:1,k:2,l:3,m:4,n:5,o:7,p:8,q:1,r:2,s:3,t:4,u:6,v:6,w:6,x:5,y:1,z:7};
+  return name.toLowerCase().replace(/[^a-z]/g,'').split('').reduce((s,c)=>s+(map[c]||0),0);
+}
+function dobToNum(d) {
+  if(!d) return 0;
+  return d.replace(/-/g,'').split('').reduce((s,c)=>s+parseInt(c),0);
+}
+function reduce(n) { while(n>9&&n!==11&&n!==22&&n!==33) n=String(n).split('').reduce((s,c)=>s+parseInt(c),0); return n; }
+
+function calcMatch() {
+  const n1 = document.getElementById('m-name1').value;
+  const n2 = document.getElementById('m-name2').value;
+  if(!n1||!n2){alert('Please enter both names');return;}
+  const d1 = document.getElementById('m-dob1').value;
+  const d2 = document.getElementById('m-dob2').value;
+  const num1 = reduce(nameToNum(n1) + dobToNum(d1));
+  const num2 = reduce(nameToNum(n2) + dobToNum(d2));
+  const diff = Math.abs(num1-num2);
+  const score = Math.round(100 - (diff/9)*60 + (Math.random()*15));
+  const clampedScore = Math.min(100, Math.max(20, score));
+  const found = compatMessages.find(c=>clampedScore>=c.range[0]&&clampedScore<=c.range[1]);
+  document.getElementById('match-title').textContent = found.title;
+  document.getElementById('match-score').textContent = clampedScore + '%';
+  document.getElementById('match-text').textContent = found.msg;
+  const bar = document.getElementById('match-bar');
+  bar.style.width = '0%';
+  setTimeout(()=>{ bar.style.width = clampedScore+'%'; }, 100);
+  const res = document.getElementById('res-match');
+  res.classList.add('show');
+}
+
+// ---- NAME ANALYSIS ----
+const nameVibrations = {
+  1:"Leadership & Independence — You are a natural pioneer, destined to forge your own path.",
+  2:"Harmony & Partnership — Your soul seeks balance, cooperation, and deep connections.",
+  3:"Creativity & Expression — A gifted communicator, you bring joy and inspiration wherever you go.",
+  4:"Stability & Foundation — Disciplined and dependable, you build lasting structures in life.",
+  5:"Freedom & Adventure — Change energises you. You thrive through exploration and new experiences.",
+  6:"Love & Responsibility — Nurturing by nature, you are the healer and caretaker of your circle.",
+  7:"Wisdom & Spirituality — A deep thinker and seeker of truth, the universe speaks through you.",
+  8:"Power & Abundance — Ambitious and magnetic, material success and leadership are your destiny.",
+  9:"Compassion & Completion — An old soul, you carry wisdom from many lifetimes.",
+  11:"Master Intuitive — A spiritual messenger with heightened sensitivity and visionary gifts.",
+  22:"Master Builder — Rare potential to turn grand dreams into lasting reality.",
+  33:"Master Teacher — Embodiment of compassion and healing on a global scale.",
+};
+
+function calcName() {
+  const name = document.getElementById('na-name').value;
+  if(!name){alert('Please enter your name');return;}
+  const dob = document.getElementById('na-dob').value;
+  const nameNum = reduce(nameToNum(name) + dobToNum(dob));
+  document.getElementById('name-num').textContent = nameNum;
+  document.getElementById('name-text').textContent = nameVibrations[nameNum] || nameVibrations[reduce(nameNum)];
+  document.getElementById('res-name').classList.add('show');
+}
+
+// ---- TAROT DRAW ----
+const tarotCards = [
+  {emoji:'☀️',name:'The Sun',meaning:'Radiant success, joy, and vitality surround you. A time of celebration and positive energy is at hand.'},
+  {emoji:'🌙',name:'The Moon',meaning:'Trust your intuition above all else. Hidden truths are being revealed. Navigate with inner light.'},
+  {emoji:'⭐',name:'The Star',meaning:'Hope, healing, and divine guidance flow toward you. You are blessed and protected on your path.'},
+  {emoji:'⚡',name:'The Tower',meaning:'A sudden change brings transformation. Release what no longer serves — liberation awaits.'},
+  {emoji:'🌍',name:'The World',meaning:'Completion, achievement, and wholeness. A cycle is fulfilled. Celebrate how far you have come.'},
+  {emoji:'❤️',name:'The Lovers',meaning:'Deep connection, harmony, and meaningful choices. Follow your heart — alignment is near.'},
+  {emoji:'⚖️',name:'Justice',meaning:'Truth and balance prevail. Fair outcomes are coming. Act with integrity and trust the process.'},
+  {emoji:'🐉',name:'Strength',meaning:'Inner courage and calm power are your greatest gifts. Face challenges with grace and confidence.'},
+  {emoji:'🔮',name:'The High Priestess',meaning:'Divine feminine wisdom speaks. Pause, listen within, and trust what your soul already knows.'},
+  {emoji:'🌀',name:'The Wheel',meaning:'Fortunate cycles are turning in your favour. Embrace change — destiny is moving with you.'},
+  {emoji:'🦅',name:'The Hermit',meaning:'Solitude brings profound wisdom. Look within. The answers you seek live in your silence.'},
+  {emoji:'🪄',name:'The Magician',meaning:'You have all the tools you need right now. Your power to manifest is at its peak — act!'},
+];
+
+let drawnCard = null;
+function drawTarot() {
+  drawnCard = tarotCards[Math.floor(Math.random()*tarotCards.length)];
+  document.getElementById('t-emoji').textContent = drawnCard.emoji;
+  document.getElementById('t-name').textContent = drawnCard.name;
+  document.getElementById('tarot-title').textContent = 'Your Card Awaits...';
+  document.getElementById('tarot-meaning').style.display = 'none';
+  const card = document.getElementById('tarot-card');
+  card.classList.remove('flipped');
+  document.getElementById('res-tarot').classList.add('show');
+}
+
+function flipCard() {
+  if(!drawnCard) return;
+  const card = document.getElementById('tarot-card');
+  card.classList.toggle('flipped');
+  if(card.classList.contains('flipped')) {
+    document.getElementById('tarot-title').textContent = drawnCard.name;
+    const m = document.getElementById('tarot-meaning');
+    m.textContent = drawnCard.meaning;
+    m.style.display = 'block';
+  }
+}
+
+// ---- LIFE PATH ----
+const lifePathMeanings = {
+  1:"The Leader — Independent, pioneering, and self-reliant. Your path is to lead and innovate.",
+  2:"The Peacemaker — Cooperative, diplomatic, and sensitive. Your gift is unity and harmony.",
+  3:"The Creator — Expressive, joyful, and artistic. Your path shines through creative expression.",
+  4:"The Builder — Practical, disciplined, and reliable. You create lasting foundations.",
+  5:"The Freedom Seeker — Adventurous, versatile, and dynamic. Change is your constant.",
+  6:"The Nurturer — Loving, responsible, and caring. Your path is service to family and community.",
+  7:"The Seeker — Analytical, spiritual, and introspective. Truth is your life's great quest.",
+  8:"The Achiever — Ambitious, authoritative, and powerful. Material and spiritual mastery await.",
+  9:"The Humanitarian — Compassionate, wise, and giving. Your soul serves the greater good.",
+  11:"Master Number 11 — Highly intuitive spiritual messenger. Enlightenment is your path.",
+  22:"Master Number 22 — The Master Builder with unlimited potential to create on a grand scale.",
+  33:"Master Number 33 — The Master Teacher whose compassion can uplift all of humanity.",
+};
+
+function calcLifePath() {
+  const dob = document.getElementById('lp-dob').value;
+  const name = document.getElementById('lp-name').value;
+  if(!dob&&!name){alert('Please enter your details');return;}
+  const dobNum = dobToNum(dob);
+  const nameNum = nameToNum(name);
+  const lp = reduce(dobNum + nameNum);
+  document.getElementById('lp-num').textContent = lp;
+  document.getElementById('lp-text').textContent = lifePathMeanings[lp] || lifePathMeanings[reduce(lp)];
+  document.getElementById('res-num').classList.add('show');
+}
+
+// ---- MODAL ----
+function openModal(service) {
+  document.getElementById('modal').classList.add('open');
+  if(service) {
+    document.querySelectorAll('.svc-option').forEach(o => {
+      if(o.textContent.toLowerCase().includes(service.toLowerCase().split(' ')[0])) {
+        o.classList.add('sel');
+      }
+    });
+  }
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modal').addEventListener('click', function(e) {
+  if(e.target === this) closeModal();
+});
+
+function selSvc(el) {
+  document.querySelectorAll('.svc-option').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function submitBooking() {
+  const name = document.getElementById('b-name').value;
+  const phone = document.getElementById('b-phone').value;
+  const dob = document.getElementById('b-dob').value;
+  const concern = document.getElementById('b-concern').value;
+  const selSvcEl = document.querySelector('.svc-option.sel');
+  const service = selSvcEl ? selSvcEl.textContent.trim() : 'Consultation';
+  if(!name||!phone){alert('Please fill in your name and phone number');return;}
+  const msg = `Hi Himu! I'd like to book a ${service}.\n\nName: ${name}\nPhone: ${phone}\nDOB: ${dob||'Not provided'}\nConcern: ${concern||'General guidance'}`;
+  const waUrl = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+  closeModal();
+}
+
+// ---- STAGGER ANIMATIONS ----
+const animEls = document.querySelectorAll('.animate-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) { e.target.style.opacity=1; e.target.style.transform='translateY(0)'; }
+  });
+}, {threshold:0.1});
+animEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
