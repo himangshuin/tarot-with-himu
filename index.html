@@ -11,16 +11,26 @@
     --gold: #c9a84c;
     --gold-light: #e8c97a;
     --gold-pale: #f5e6bc;
-    --deep: #0a0612;
-    --indigo: #140d2e;
-    --violet: #1e1040;
-    --card-bg: rgba(255,255,255,0.04);
-    --border: rgba(201,168,76,0.25);
-    --text: #e8dfc8;
-    --text-dim: rgba(232,223,200,0.6);
+    --gold-dim: rgba(201,168,76,0.18);
+    --deep: #07040f;
+    --indigo: #110b26;
+    --violet: #1a0d38;
+    --card-bg: rgba(255,255,255,0.035);
+    --card-hover: rgba(201,168,76,0.06);
+    --border: rgba(201,168,76,0.22);
+    --border-hover: rgba(201,168,76,0.6);
+    --text: #ede5d0;
+    --text-dim: rgba(237,229,208,0.55);
+    --text-dimmer: rgba(237,229,208,0.35);
+    --wa: #25d366;
+    --wa-bg: rgba(37,211,102,0.1);
+    --radius: 8px;
+    --radius-sm: 5px;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     background: var(--deep);
@@ -28,90 +38,135 @@
     font-family: 'Cormorant Garamond', serif;
     min-height: 100vh;
     overflow-x: hidden;
-    position: relative;
   }
 
-  /* Starfield */
-  .stars {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  /* ============ BACKGROUND ============ */
+  .bg-layer {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  }
+
+  .bg-nebula {
     background:
-      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
-      radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 45% 8%, rgba(255,255,255,0.7) 0%, transparent 100%),
-      radial-gradient(1px 1px at 60% 30%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 75% 12%, rgba(255,255,255,0.6) 0%, transparent 100%),
-      radial-gradient(1px 1px at 88% 50%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 33% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 55% 80%, rgba(255,255,255,0.6) 0%, transparent 100%),
-      radial-gradient(1px 1px at 80% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 15% 88%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(2px 2px at 5% 55%, rgba(201,168,76,0.4) 0%, transparent 100%),
-      radial-gradient(2px 2px at 92% 25%, rgba(201,168,76,0.3) 0%, transparent 100%),
-      radial-gradient(2px 2px at 50% 95%, rgba(201,168,76,0.4) 0%, transparent 100%);
+      radial-gradient(ellipse 90% 60% at 15% 10%, rgba(90,20,180,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 80% at 85% 90%, rgba(40,8,110,0.28) 0%, transparent 55%),
+      radial-gradient(ellipse 120% 50% at 50% 60%, rgba(10,4,40,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 70% 20%, rgba(180,80,20,0.08) 0%, transparent 50%);
   }
 
-  /* Nebula bg */
-  .nebula {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background:
-      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(80,20,160,0.25) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 70% at 80% 80%, rgba(40,10,100,0.3) 0%, transparent 60%),
-      radial-gradient(ellipse 100% 40% at 50% 50%, rgba(15,5,50,0.5) 0%, transparent 70%);
+  .bg-stars {
+    background-image:
+      radial-gradient(1.5px 1.5px at 8% 12%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 18% 35%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 8%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 45%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 52% 22%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 60%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 74% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 72%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 92% 38%, rgba(255,255,255,0.65) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 80%, rgba(255,255,255,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 88%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 58% 92%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 85%, rgba(255,255,255,0.55) 0%, transparent 100%),
+      radial-gradient(2.5px 2.5px at 45% 5%, rgba(201,168,76,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 88% 18%, rgba(201,168,76,0.35) 0%, transparent 100%),
+      radial-gradient(2px 2px at 22% 65%, rgba(201,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(2.5px 2.5px at 67% 78%, rgba(201,168,76,0.4) 0%, transparent 100%);
   }
 
+  /* Twinkling animation */
+  .bg-twinkle {
+    animation: twinkle 6s ease-in-out infinite alternate;
+    background-image:
+      radial-gradient(1px 1px at 15% 50%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 30%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 90%, rgba(255,255,255,0.4) 0%, transparent 100%);
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+
+  /* ============ LAYOUT ============ */
   .page {
     position: relative; z-index: 1;
-    max-width: 480px;
+    max-width: 460px;
     margin: 0 auto;
-    padding: 40px 20px 60px;
+    padding: 44px 18px 100px;
   }
 
-  /* ---- HEADER ---- */
+  /* ============ HEADER ============ */
   .header {
     text-align: center;
-    margin-bottom: 32px;
-    animation: fadeDown 0.8s ease both;
+    margin-bottom: 36px;
   }
 
-  .avatar-wrap {
+  .avatar-scene {
     position: relative;
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  .avatar-glow {
+    position: absolute; inset: -20px;
+    background: radial-gradient(circle, rgba(201,168,76,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: glowPulse 3s ease-in-out infinite;
   }
 
   .avatar-ring {
-    width: 110px; height: 110px;
+    width: 120px; height: 120px;
     border-radius: 50%;
-    border: 2px solid var(--gold);
     display: flex; align-items: center; justify-content: center;
     position: relative;
-    background: radial-gradient(circle at 40% 40%, #2a1060, #0d0825);
-    box-shadow: 0 0 30px rgba(201,168,76,0.3), inset 0 0 20px rgba(80,20,160,0.4);
+    background: radial-gradient(circle at 35% 35%, #2d1270, #0d0825);
+    border: 1.5px solid var(--gold);
+    box-shadow:
+      0 0 0 6px rgba(201,168,76,0.06),
+      0 0 40px rgba(201,168,76,0.25),
+      inset 0 0 30px rgba(80,20,160,0.5);
   }
 
-  .avatar-emoji { font-size: 52px; line-height: 1; }
+  .avatar-emoji { font-size: 56px; line-height: 1; filter: drop-shadow(0 0 12px rgba(201,168,76,0.5)); }
 
-  .orbit {
-    position: absolute; inset: -12px;
-    border: 1px dashed rgba(201,168,76,0.35);
+  .orbit-1, .orbit-2 {
+    position: absolute;
     border-radius: 50%;
-    animation: spin 18s linear infinite;
+    border: 1px dashed rgba(201,168,76,0.3);
   }
+  .orbit-1 { inset: -14px; animation: spin 20s linear infinite; }
+  .orbit-2 { inset: -26px; animation: spin 35s linear infinite reverse; border-color: rgba(201,168,76,0.15); border-style: dotted; }
+
   .orbit-dot {
-    position: absolute; top: -4px; left: calc(50% - 4px);
-    width: 8px; height: 8px;
-    background: var(--gold); border-radius: 50%;
-    box-shadow: 0 0 8px var(--gold);
+    position: absolute; top: -5px; left: calc(50% - 5px);
+    width: 10px; height: 10px;
+    background: radial-gradient(circle, #e8c97a, #c9a84c);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(201,168,76,0.8);
+  }
+  .orbit-dot-2 {
+    position: absolute; bottom: -4px; right: -4px;
+    width: 7px; height: 7px;
+    background: rgba(180,100,255,0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(180,100,255,0.6);
   }
 
   .name {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
-    color: var(--gold-light);
+    background: linear-gradient(135deg, #f5e6bc 0%, #c9a84c 40%, #e8c97a 70%, #c9a84c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: 1px;
-    margin-bottom: 4px;
-    text-shadow: 0 0 20px rgba(201,168,76,0.4);
+    margin-bottom: 6px;
+    text-shadow: none;
+    filter: drop-shadow(0 2px 12px rgba(201,168,76,0.3));
   }
 
   .tagline {
@@ -119,281 +174,262 @@
     font-style: italic;
     color: var(--text-dim);
     font-weight: 300;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
   }
 
-  .location {
-    display: inline-flex; align-items: center; gap: 5px;
-    margin-top: 8px;
+  .location-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 14px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    background: rgba(201,168,76,0.06);
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     color: var(--gold);
     letter-spacing: 2px;
     text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .header-meta {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .stars-row { color: var(--gold); font-size: 15px; letter-spacing: 3px; }
+
+  .cert-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
     opacity: 0.8;
   }
 
-  /* Stars rating */
-  .rating-bar {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    margin-top: 12px;
-  }
-  .stars-row { color: var(--gold); font-size: 16px; letter-spacing: 2px; }
-  .rating-text {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-  }
-
-  /* Divider */
-  .divider {
-    display: flex; align-items: center; gap: 12px;
-    margin: 24px 0;
-    opacity: 0.5;
-  }
-  .divider-line { flex: 1; height: 1px; background: var(--gold); }
-  .divider-icon { color: var(--gold); font-size: 14px; }
-
-  /* Section label */
-  .section-label {
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 6px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--gold);
-    text-align: center;
-    margin-bottom: 14px;
+    color: #6de89a;
+    margin-top: 10px;
+    padding: 5px 12px;
+    border: 1px solid rgba(109,232,154,0.25);
+    border-radius: 20px;
+    background: rgba(109,232,154,0.05);
+  }
+  .live-dot {
+    width: 7px; height: 7px;
+    background: #6de89a; border-radius: 50%;
+    box-shadow: 0 0 8px #6de89a;
+    animation: livePulse 1.5s ease infinite;
+  }
+
+  /* ============ DIVIDER ============ */
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 26px 0;
+  }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.3; }
+  .divider-gem {
+    width: 20px; height: 20px;
+    background: var(--deep);
+    border: 1px solid rgba(201,168,76,0.4);
+    transform: rotate(45deg);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .divider-gem::after {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(0deg);
+    border-radius: 1px;
     opacity: 0.7;
   }
 
-  /* CTA Button */
+  /* ============ SECTION LABEL ============ */
+  .section-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+
+  /* ============ CTA BUTTONS ============ */
   .cta-btn {
     display: flex; align-items: center; justify-content: center; gap: 10px;
     width: 100%;
-    padding: 16px 24px;
-    border-radius: 4px;
+    padding: 17px 24px;
+    border-radius: var(--radius);
     text-decoration: none;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
     margin-bottom: 10px;
     cursor: pointer;
     border: none;
-  }
-
-  .cta-primary {
-    background: linear-gradient(135deg, #c9a84c, #8b6914, #c9a84c);
-    background-size: 200% 200%;
-    color: var(--deep);
-    box-shadow: 0 4px 20px rgba(201,168,76,0.4);
-    animation: shimmer 3s ease infinite;
     position: relative;
     overflow: hidden;
   }
+
+  .cta-primary {
+    background: linear-gradient(135deg, #d4a84c 0%, #8b6010 40%, #c9a84c 70%, #f0c060 100%);
+    background-size: 200% 200%;
+    color: #07040f;
+    font-weight: 700;
+    box-shadow: 0 4px 24px rgba(201,168,76,0.4), 0 1px 0 rgba(255,255,255,0.2) inset;
+    animation: shimmer 4s ease infinite;
+    letter-spacing: 3px;
+  }
   .cta-primary::before {
     content: '';
-    position: absolute; top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: sweep 3s ease infinite;
+    position: absolute; top: 0; left: -150%;
+    width: 80%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: sweep 3.5s ease infinite 1s;
   }
   .cta-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(201,168,76,0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px rgba(201,168,76,0.55), 0 1px 0 rgba(255,255,255,0.2) inset;
   }
 
   .cta-whatsapp {
-    background: rgba(37,211,102,0.12);
-    border: 1px solid rgba(37,211,102,0.4);
-    color: #6de89a;
+    background: var(--wa-bg);
+    border: 1.5px solid rgba(37,211,102,0.35);
+    color: #7de8a4;
+    backdrop-filter: blur(8px);
   }
   .cta-whatsapp:hover {
-    background: rgba(37,211,102,0.2);
-    transform: translateY(-2px);
+    background: rgba(37,211,102,0.18);
+    border-color: rgba(37,211,102,0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(37,211,102,0.2);
   }
 
   .cta-outline {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    color: var(--text);
+    color: var(--text-dim);
+    backdrop-filter: blur(8px);
   }
   .cta-outline:hover {
-    border-color: var(--gold);
+    border-color: var(--border-hover);
     color: var(--gold-light);
     transform: translateY(-2px);
-    background: rgba(201,168,76,0.05);
+    background: var(--card-hover);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   }
 
-  .btn-icon { font-size: 18px; flex-shrink: 0; }
+  .btn-icon { font-size: 19px; flex-shrink: 0; }
 
-  /* Service Cards Grid */
+  /* ============ SERVICE CARDS ============ */
   .services-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .service-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px 12px;
+    border-radius: var(--radius);
+    padding: 18px 12px 16px;
     text-align: center;
-    text-decoration: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
     display: flex; flex-direction: column; align-items: center; gap: 8px;
     color: var(--text);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
   }
-  .service-card:hover {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.07);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
-  .service-card .sc-icon { font-size: 26px; }
-  .service-card .sc-name {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gold-light);
-  }
-  .service-card .sc-sub {
-    font-size: 12px;
-    color: var(--text-dim);
-    font-style: italic;
-  }
-
-  /* Reviews section */
-  .review-embed-box {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 20px;
-    margin-bottom: 10px;
-  }
-
-  .gmb-header {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 14px;
-  }
-  .gmb-icon {
-    width: 36px; height: 36px;
-    background: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .gmb-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: var(--gold-light);
-    text-transform: uppercase;
-  }
-  .gmb-sub { font-size: 12px; color: var(--text-dim); }
-
-  .review-carousel { position: relative; overflow: hidden; }
-  .reviews-track {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-  .review-item {
-    min-width: 100%;
-    padding: 0 2px;
-  }
-  .review-stars { color: var(--gold); font-size: 14px; margin-bottom: 6px; }
-  .review-text {
-    font-size: 14px;
-    line-height: 1.6;
-    font-style: italic;
-    color: var(--text-dim);
-    margin-bottom: 8px;
-  }
-  .review-author {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-
-  .review-dots {
-    display: flex; justify-content: center; gap: 6px;
-    margin-top: 14px;
-  }
-  .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--border);
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  .dot.active { background: var(--gold); }
-
-  .gmb-link {
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-    margin-top: 14px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    opacity: 0.8;
+  .service-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    opacity: 0;
     transition: opacity 0.3s;
   }
-  .gmb-link:hover { opacity: 1; }
+  .service-card:hover::before { opacity: 1; }
+  .service-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,168,76,0.1);
+  }
+  .sc-icon { font-size: 28px; filter: drop-shadow(0 0 8px rgba(201,168,76,0.3)); }
+  .sc-name {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+  .sc-sub {
+    font-size: 12px;
+    color: var(--text-dimmer);
+    font-style: italic;
+    line-height: 1.3;
+  }
 
-  /* Free Tools */
+  /* ============ TOOL PANEL ============ */
   .tool-panel {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius);
     overflow: hidden;
     margin-bottom: 10px;
+    backdrop-filter: blur(12px);
   }
 
   .tool-tabs {
     display: flex;
     border-bottom: 1px solid var(--border);
+    background: rgba(0,0,0,0.2);
   }
   .tool-tab {
     flex: 1;
-    padding: 10px 6px;
+    padding: 11px 4px;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1px;
+    font-size: 9.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--text-dimmer);
     cursor: pointer;
     text-align: center;
     border: none;
     background: transparent;
-    transition: all 0.3s;
+    transition: all 0.25s;
     border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
   }
   .tool-tab.active {
     color: var(--gold);
     border-bottom-color: var(--gold);
-    background: rgba(201,168,76,0.05);
+    background: rgba(201,168,76,0.04);
   }
+  .tool-tab:hover:not(.active) { color: var(--text-dim); }
 
-  .tool-content { padding: 20px; }
-
+  .tool-content { padding: 22px 20px; }
   .tool-form { display: none; }
-  .tool-form.active { display: block; }
+  .tool-form.active { display: block; animation: fadeSlideUp 0.35s ease both; }
 
   .tool-title {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--gold-light);
     margin-bottom: 4px;
     text-align: center;
@@ -402,136 +438,302 @@
     font-size: 13px;
     color: var(--text-dim);
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     font-style: italic;
   }
 
-  .form-group { margin-bottom: 12px; }
+  .form-group { margin-bottom: 13px; }
   .form-label {
     display: block;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-size: 9px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 6px;
+    opacity: 0.8;
   }
   .form-input {
     width: 100%;
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--border);
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     padding: 10px 14px;
     color: var(--text);
     font-family: 'Cormorant Garamond', serif;
     font-size: 15px;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.25s, background 0.25s;
   }
-  .form-input:focus { border-color: var(--gold); }
-  .form-input::placeholder { color: var(--text-dim); }
+  .form-input:focus {
+    border-color: rgba(201,168,76,0.55);
+    background: rgba(201,168,76,0.04);
+  }
+  .form-input::placeholder { color: var(--text-dimmer); }
+  select.form-input { cursor: pointer; }
+  select.form-input option { background: #1a0d38; color: var(--text); }
 
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
   .tool-btn {
     width: 100%;
     padding: 13px;
-    background: rgba(201,168,76,0.15);
-    border: 1px solid var(--gold);
-    border-radius: 3px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.45);
+    border-radius: var(--radius-sm);
     color: var(--gold-light);
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.25s;
     margin-top: 4px;
   }
   .tool-btn:hover {
-    background: rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.22);
     transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(201,168,76,0.2);
   }
 
   .tool-result {
-    margin-top: 16px;
-    padding: 16px;
-    background: rgba(201,168,76,0.06);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 3px;
+    margin-top: 18px;
+    padding: 18px;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: var(--radius-sm);
     display: none;
-    animation: fadeIn 0.5s ease;
   }
-  .tool-result.show { display: block; }
+  .tool-result.show { display: block; animation: fadeSlideUp 0.4s ease both; }
 
   .result-headline {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--gold);
     margin-bottom: 8px;
     text-align: center;
   }
   .result-text {
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--text-dim);
     text-align: center;
     font-style: italic;
   }
   .result-number {
-    font-size: 42px;
+    font-size: 52px;
     color: var(--gold-light);
     text-align: center;
     font-family: 'Cinzel Decorative', serif;
     display: block;
-    margin: 8px 0;
-    text-shadow: 0 0 20px rgba(201,168,76,0.5);
+    margin: 6px 0 10px;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.45));
+    line-height: 1;
+  }
+
+  .compat-meter {
+    margin: 14px 0 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .compat-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    background: linear-gradient(90deg, #8b4513, #c9a84c 50%, #6de89a);
+  }
+  .compat-label {
+    display: flex; justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-dimmer);
+    letter-spacing: 1px;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    margin-top: 4px;
   }
 
   /* Tarot card flip */
   .tarot-result { text-align: center; }
   .card-flip-wrap {
-    perspective: 600px;
-    width: 100px; height: 160px;
-    margin: 12px auto;
+    perspective: 700px;
+    width: 105px; height: 168px;
+    margin: 14px auto 8px;
     cursor: pointer;
   }
   .card-flip {
     width: 100%; height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.7s ease;
+    transition: transform 0.75s cubic-bezier(0.4,0,0.2,1);
   }
   .card-flip.flipped { transform: rotateY(180deg); }
   .card-face {
     position: absolute; inset: 0;
     backface-visibility: hidden;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid var(--gold);
     display: flex; align-items: center; justify-content: center;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
   }
   .card-back {
-    background: radial-gradient(circle at 50% 50%, #2a1060, #0d0825);
-    font-size: 28px;
+    background: radial-gradient(circle at 40% 35%, #2d1270, #0d0825);
+    font-size: 30px;
+  }
+  .card-back-pattern {
+    position: absolute; inset: 6px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 5px;
   }
   .card-front {
-    background: linear-gradient(135deg, #1a0840, #0d0825);
+    background: linear-gradient(160deg, #1d0945, #0d0825);
     transform: rotateY(180deg);
-    flex-direction: column;
-    padding: 10px;
+    padding: 12px 8px;
   }
-  .card-front .c-emoji { font-size: 32px; }
+  .card-front .c-emoji { font-size: 36px; }
   .card-front .c-name {
     font-family: 'Cinzel Decorative', serif;
     font-size: 8px;
     color: var(--gold);
     text-align: center;
     letter-spacing: 0.5px;
+    line-height: 1.4;
+  }
+  .tap-hint { font-size: 11px; color: var(--text-dimmer); font-style: italic; }
+
+  /* ============ REVIEWS ============ */
+  .review-embed-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 20px 18px;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
   }
 
-  /* Social Links */
+  .gmb-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px;
+  }
+  .gmb-icon-wrap {
+    width: 38px; height: 38px;
+    background: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #4285F4;
+    flex-shrink: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .gmb-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+  .gmb-sub { font-size: 12px; color: var(--text-dimmer); }
+  .gmb-rating {
+    margin-left: auto; text-align: right; flex-shrink: 0;
+  }
+  .gmb-stars { color: var(--gold); font-size: 12px; }
+  .gmb-score {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    color: var(--text-dimmer);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* Google Reviews Widget */
+  .google-reviews-widget {
+    margin-bottom: 16px;
+  }
+
+  .review-carousel { overflow: hidden; }
+  .reviews-track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  }
+  .review-item { min-width: 100%; padding: 0 2px; }
+  .review-stars { color: var(--gold); font-size: 13px; margin-bottom: 8px; letter-spacing: 2px; }
+  .review-text {
+    font-size: 14px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .review-text::before {
+    content: '"';
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 40px;
+    color: rgba(201,168,76,0.15);
+    position: absolute;
+    top: -10px; left: -5px;
+    line-height: 1;
+  }
+  .review-author {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .review-controls {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin-top: 16px;
+  }
+  .review-nav {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    color: var(--gold);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    transition: all 0.25s;
+    flex-shrink: 0;
+  }
+  .review-nav:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  .review-dots { display: flex; gap: 6px; }
+  .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .dot.active { background: var(--gold); transform: scale(1.4); }
+
+  .gmb-link {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 16px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.25s;
+    padding: 8px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: var(--radius-sm);
+  }
+  .gmb-link:hover { opacity: 1; background: rgba(201,168,76,0.05); }
+
+  /* ============ SOCIAL ============ */
   .social-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -539,60 +741,189 @@
     margin-bottom: 10px;
   }
   .social-btn {
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    padding: 14px 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 7px;
+    padding: 16px 8px 14px;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: var(--radius);
     text-decoration: none;
     transition: all 0.3s;
     cursor: pointer;
+    backdrop-filter: blur(8px);
   }
   .social-btn:hover {
-    border-color: var(--gold);
-    transform: translateY(-3px);
-    background: rgba(201,168,76,0.07);
+    border-color: rgba(201,168,76,0.45);
+    transform: translateY(-4px);
+    background: var(--card-hover);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   }
-  .social-btn .s-icon { font-size: 22px; }
-  .social-btn .s-label {
+  .s-icon { font-size: 22px; }
+  .s-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-dimmer);
+  }
+
+  /* ============ MODAL ============ */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(4,2,15,0.88);
+    z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: linear-gradient(145deg, #140b2e, #0d0825);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 12px;
+    padding: 32px 24px 24px;
+    width: 100%; max-width: 400px;
+    max-height: 90vh; overflow-y: auto;
+    position: relative;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,168,76,0.1);
+  }
+  .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+
+  .modal-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 19px;
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .modal-sub {
+    font-size: 14px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-bottom: 22px;
+    font-style: italic;
+  }
+  .modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: transparent; border: none;
+    color: var(--text-dimmer); font-size: 22px; cursor: pointer;
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+  }
+  .modal-close:hover { color: var(--gold); background: rgba(201,168,76,0.1); }
+
+  .service-select {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    margin-bottom: 20px;
+  }
+  .svc-option {
+    padding: 10px 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-dimmer);
     font-family: 'Josefin Sans', sans-serif;
     font-size: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: var(--text-dim);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.25s;
+  }
+  .svc-option.sel {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+  }
+  .svc-option:hover:not(.sel) { border-color: rgba(201,168,76,0.35); color: var(--text-dim); }
+
+  .modal-footer { margin-top: 16px; font-size: 12px; color: var(--text-dimmer); text-align: center; font-style: italic; }
+
+  /* ============ FLOATING WHATSAPP ============ */
+  .wa-float {
+    position: fixed;
+    bottom: 24px; right: 20px;
+    z-index: 300;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
   }
 
-  /* Footer */
+  .wa-tooltip {
+    background: rgba(20,10,50,0.95);
+    border: 1px solid rgba(37,211,102,0.35);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #7de8a4;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(6px) scale(0.95);
+    transition: all 0.3s;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+  }
+  .wa-float:hover .wa-tooltip { opacity: 1; transform: translateY(0) scale(1); }
+
+  .wa-btn {
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25d366, #128c3e);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.4);
+    transition: all 0.3s;
+    animation: waBounce 3s ease infinite 2s;
+    position: relative;
+  }
+  .wa-btn::before {
+    content: '';
+    position: absolute; inset: -4px;
+    border-radius: 50%;
+    border: 2px solid rgba(37,211,102,0.3);
+    animation: waRing 2s ease-in-out infinite;
+  }
+  .wa-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 36px rgba(37,211,102,0.6);
+    animation: none;
+  }
+  .wa-icon { font-size: 28px; line-height: 1; }
+
+  /* ============ FOOTER ============ */
   .footer {
     text-align: center;
-    margin-top: 32px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+    margin-top: 36px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(201,168,76,0.12);
   }
   .footer-name {
     font-family: 'Cinzel Decorative', serif;
     font-size: 13px;
     color: var(--gold);
-    opacity: 0.6;
+    opacity: 0.55;
     letter-spacing: 1px;
+    margin-bottom: 5px;
   }
   .footer-copy {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 10px;
     letter-spacing: 1px;
-    color: var(--text-dim);
-    margin-top: 4px;
-    opacity: 0.5;
+    color: var(--text-dimmer);
+    opacity: 0.6;
+    line-height: 1.8;
   }
 
-  /* Animations */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* ============ ANIMATIONS ============ */
+  @keyframes glowPulse {
+    0%,100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   @keyframes shimmer {
@@ -600,177 +931,93 @@
     50% { background-position: 100% 50%; }
   }
   @keyframes sweep {
-    0% { left: -100%; }
-    100% { left: 200%; }
+    0% { left: -150%; }
+    100% { left: 250%; }
   }
-  @keyframes pulse {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0.6; }
+  @keyframes livePulse {
+    0%,100% { opacity: 1; box-shadow: 0 0 8px #6de89a; }
+    50% { opacity: 0.5; box-shadow: 0 0 4px #6de89a; }
   }
-
-  .animate-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.6s ease forwards;
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-
-  /* Consultation modal */
-  .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(5,2,20,0.92);
-    z-index: 100;
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
+  @keyframes waBounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
   }
-  .modal-overlay.open {
-    opacity: 1;
-    pointer-events: all;
+  @keyframes waRing {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.5); opacity: 0; }
   }
-  .modal {
-    background: var(--indigo);
-    border: 1px solid var(--gold);
-    border-radius: 6px;
-    padding: 30px 24px;
-    width: 100%;
-    max-width: 400px;
-    max-height: 90vh;
-    overflow-y: auto;
-    transform: scale(0.9);
-    transition: transform 0.3s;
-  }
-  .modal-overlay.open .modal { transform: scale(1); }
-  .modal-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 18px;
-    color: var(--gold-light);
-    text-align: center;
-    margin-bottom: 6px;
-  }
-  .modal-sub {
-    font-size: 14px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-  .modal-close {
-    position: absolute;
-    top: 12px; right: 16px;
-    background: transparent;
-    border: none;
-    color: var(--text-dim);
-    font-size: 20px;
-    cursor: pointer;
-  }
-  .service-select {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-    margin-bottom: 16px;
-  }
-  .svc-option {
-    padding: 10px 8px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    color: var(--text-dim);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s;
-  }
-  .svc-option.sel {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: rgba(201,168,76,0.1);
-  }
-  .modal-form .form-group { margin-bottom: 14px; }
-  .modal-footer { margin-top: 16px; font-size: 12px; color: var(--text-dim); text-align: center; }
-
-  .live-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #6de89a;
-    margin-top: 8px;
-  }
-  .live-dot {
-    width: 6px; height: 6px;
-    background: #6de89a; border-radius: 50%;
-    animation: pulse 1.5s ease infinite;
+  @keyframes pageIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Compatibility meter */
-  .compat-meter {
-    margin: 12px 0;
-    height: 8px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .compat-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 1s ease;
-    background: linear-gradient(90deg, #8b4513, #c9a84c, #6de89a);
-  }
-  .compat-label {
-    display: flex; justify-content: space-between;
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-top: 4px;
-  }
+  .anim { animation: pageIn 0.6s ease both; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--deep); }
+  ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 10px; }
 </style>
 </head>
 <body>
 
-<div class="stars"></div>
-<div class="nebula"></div>
+<!-- Background Layers -->
+<div class="bg-layer bg-nebula"></div>
+<div class="bg-layer bg-stars"></div>
+<div class="bg-layer bg-twinkle"></div>
+
+<!-- Floating WhatsApp Button -->
+<div class="wa-float">
+  <div class="wa-tooltip">💬 Chat on WhatsApp</div>
+  <a href="https://wa.me/916901529861?text=Hi%20Himu!%20I%20came%20from%20your%20link%20and%20would%20like%20to%20book%20a%20consultation%20🙏" target="_blank" class="wa-btn" aria-label="Chat on WhatsApp">
+    <span class="wa-icon">💬</span>
+  </a>
+</div>
 
 <div class="page">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="avatar-wrap">
+  <!-- ===== HEADER ===== -->
+  <div class="header anim" style="animation-delay:0s">
+    <div class="avatar-scene">
+      <div class="avatar-glow"></div>
       <div class="avatar-ring">
         <span class="avatar-emoji">🔮</span>
-        <div class="orbit"><div class="orbit-dot"></div></div>
+        <div class="orbit-1"><div class="orbit-dot"></div></div>
+        <div class="orbit-2"><div class="orbit-dot-2"></div></div>
       </div>
     </div>
     <div class="name">Tarot With Himu</div>
     <div class="tagline">Clarity · Healing · Empowerment</div>
-    <div class="location">📍 Guwahati, Assam · India &amp; Online</div>
-    <div class="rating-bar">
+    <div class="location-badge">📍 Guwahati, Assam · India &amp; Online</div>
+    <div class="header-meta">
       <span class="stars-row">★★★★★</span>
-      <span class="rating-text">Certified Astrologer</span>
+      <span class="cert-badge">✦ Certified Astrologer</span>
     </div>
-    <div class="live-badge"><span class="live-dot"></span> Accepting Consultations</div>
+    <div><span class="live-badge"><span class="live-dot"></span> Accepting Consultations</span></div>
   </div>
 
-  <!-- PRIMARY CTA -->
-  <div class="animate-in" style="animation-delay:0.1s">
+  <!-- ===== PRIMARY CTAs ===== -->
+  <div class="anim" style="animation-delay:0.1s">
     <button class="cta-btn cta-primary" onclick="openModal()">
       <span class="btn-icon">✨</span> Book a Consultation
     </button>
-    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Himu!%20I%20want%20to%20book%20a%20consultation" target="_blank" class="cta-btn cta-whatsapp">
-      <span class="btn-icon">💬</span> WhatsApp Now
+    <a href="https://wa.me/916901529861?text=Hi%20Himu!%20I%20want%20to%20book%20a%20consultation%20🙏" target="_blank" class="cta-btn cta-whatsapp">
+      <span class="btn-icon">💬</span> WhatsApp Now — +91 69015 29861
     </a>
   </div>
 
-  <div class="divider animate-in" style="animation-delay:0.2s">
+  <div class="divider anim" style="animation-delay:0.15s">
     <div class="divider-line"></div>
-    <span class="divider-icon">✦</span>
+    <div class="divider-gem"></div>
     <div class="divider-line"></div>
   </div>
 
-  <!-- SERVICES -->
-  <div class="animate-in" style="animation-delay:0.25s">
+  <!-- ===== SERVICES ===== -->
+  <div class="anim" style="animation-delay:0.2s">
     <div class="section-label">✦ Services Offered ✦</div>
     <div class="services-grid">
       <div class="service-card" onclick="openModal('Tarot Reading')">
@@ -804,33 +1051,33 @@
         <div class="sc-sub">Career · Love · Healing</div>
       </div>
     </div>
-    <a href="https://tarotwithhimu.com/tarot-reading-service-packages/" target="_blank" class="cta-btn cta-outline">
-      <span class="btn-icon">📋</span> View All Packages & Pricing
+    <a href="https://tarotwithhimu.com/tarot-reading-service-packages/" target="_blank" class="cta-btn cta-outline" style="text-decoration:none">
+      <span class="btn-icon">📋</span> View All Packages &amp; Pricing
     </a>
   </div>
 
-  <div class="divider animate-in" style="animation-delay:0.3s">
+  <div class="divider anim" style="animation-delay:0.25s">
     <div class="divider-line"></div>
-    <span class="divider-icon">✦</span>
+    <div class="divider-gem"></div>
     <div class="divider-line"></div>
   </div>
 
-  <!-- FREE TOOLS -->
-  <div class="animate-in" style="animation-delay:0.35s">
+  <!-- ===== FREE TOOLS ===== -->
+  <div class="anim" style="animation-delay:0.3s">
     <div class="section-label">✦ Free Mystical Tools ✦</div>
     <div class="tool-panel">
       <div class="tool-tabs">
-        <button class="tool-tab active" onclick="switchTool('match')">💑 Match</button>
-        <button class="tool-tab" onclick="switchTool('name')">🔤 Name</button>
-        <button class="tool-tab" onclick="switchTool('tarot')">🃏 Tarot</button>
-        <button class="tool-tab" onclick="switchTool('num')">🔢 Number</button>
+        <button class="tool-tab active" onclick="switchTool('match',this)">💑 Match</button>
+        <button class="tool-tab" onclick="switchTool('name',this)">🔤 Name</button>
+        <button class="tool-tab" onclick="switchTool('tarot',this)">🃏 Tarot</button>
+        <button class="tool-tab" onclick="switchTool('num',this)">🔢 Number</button>
       </div>
       <div class="tool-content">
 
         <!-- MATCHMAKING -->
         <div class="tool-form active" id="tool-match">
           <div class="tool-title">🌹 Free Matchmaking</div>
-          <div class="tool-desc">Discover your compatibility score</div>
+          <div class="tool-desc">Discover your cosmic compatibility</div>
           <div class="form-group">
             <label class="form-label">Your Name</label>
             <input class="form-input" type="text" id="m-name1" placeholder="Enter your full name">
@@ -876,7 +1123,7 @@
             <div class="result-headline" id="match-title">Cosmic Compatibility</div>
             <span class="result-number" id="match-score"></span>
             <div class="compat-meter"><div class="compat-fill" id="match-bar" style="width:0%"></div></div>
-            <div class="compat-label"><span>Low</span><span>Perfect</span></div>
+            <div class="compat-label"><span>Challenging</span><span>Twin Flames</span></div>
             <div class="result-text" id="match-text"></div>
           </div>
         </div>
@@ -915,15 +1162,18 @@
               <div class="result-headline" id="tarot-title"></div>
               <div class="card-flip-wrap" onclick="flipCard()">
                 <div class="card-flip" id="tarot-card">
-                  <div class="card-face card-back">🔮</div>
+                  <div class="card-face card-back">
+                    <div class="card-back-pattern"></div>
+                    🔮
+                  </div>
                   <div class="card-face card-front">
                     <span class="c-emoji" id="t-emoji">⭐</span>
                     <span class="c-name" id="t-name">The Star</span>
                   </div>
                 </div>
               </div>
-              <div class="result-text" style="margin-top:8px; font-size:11px; color:var(--text-dim)">Tap card to reveal</div>
-              <div class="result-text" id="tarot-meaning" style="margin-top:10px; display:none"></div>
+              <div class="tap-hint">Tap card to reveal</div>
+              <div class="result-text" id="tarot-meaning" style="margin-top:12px; display:none"></div>
             </div>
           </div>
         </div>
@@ -952,81 +1202,84 @@
     </div>
   </div>
 
-  <div class="divider animate-in" style="animation-delay:0.4s">
+  <div class="divider anim" style="animation-delay:0.35s">
     <div class="divider-line"></div>
-    <span class="divider-icon">✦</span>
+    <div class="divider-gem"></div>
     <div class="divider-line"></div>
   </div>
 
-  <!-- GOOGLE REVIEWS -->
-  <div class="animate-in" style="animation-delay:0.45s">
+  <!-- ===== GOOGLE REVIEWS (Featurable) ===== -->
+  <div class="anim" style="animation-delay:0.4s">
     <div class="section-label">✦ What Clients Say ✦</div>
     <div class="review-embed-box">
       <div class="gmb-header">
-        <div class="gmb-icon">G</div>
+        <div class="gmb-icon-wrap">G</div>
         <div>
           <div class="gmb-title">Google Reviews</div>
           <div class="gmb-sub">Tarot With Himu · Guwahati</div>
         </div>
-        <div style="margin-left:auto; text-align:right">
-          <div style="color:var(--gold); font-size:13px;">★★★★★</div>
-          <div style="font-family:'Josefin Sans',sans-serif; font-size:10px; color:var(--text-dim)">5.0 Rating</div>
+        <div class="gmb-rating">
+          <div class="gmb-stars">★★★★★</div>
+          <div class="gmb-score">5.0 · Verified</div>
         </div>
       </div>
 
-      <!-- Paste your EmbedSocial / Elfsight Google Reviews widget here -->
-      <!-- <div class="elfsight-app-XXXXXXXX"></div> -->
-      <!-- Until then, animated testimonials are shown -->
+      <!-- Featurable Google Reviews Widget -->
+      <div class="google-reviews-widget">
+        <div id="featurable-6383c159-93aa-4f0c-b833-d778fba0aa5a" data-featurable-async></div>
+        <script src="https://featurable.com/assets/v2/grid_default.min.js" defer charset="UTF-8"></script>
+      </div>
 
-      <div class="review-carousel">
+      <!-- Fallback animated reviews (shown if widget hasn't loaded) -->
+      <div class="review-carousel" id="review-carousel-fallback">
         <div class="reviews-track" id="reviews-track">
           <div class="review-item">
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">"I have been to many astrologers before, but the level of accuracy and intuition that Tarot With Himu has is unmatched. Every word felt personally guided."</div>
+            <div class="review-text">I have been to many astrologers before, but the accuracy and intuition Tarot With Himu has is truly unmatched. Every word felt personally guided.</div>
             <div class="review-author">— Priya S., Delhi</div>
           </div>
           <div class="review-item">
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">"The tarot reading with Himu Sir was a truly spiritual journey. He answered all my questions with patience and empathy. I felt heard and understood."</div>
+            <div class="review-text">The tarot reading with Himu Sir was a truly spiritual journey. He answered all my questions with patience and empathy. I felt heard and understood.</div>
             <div class="review-author">— Rahul M., Guwahati</div>
           </div>
           <div class="review-item">
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">"My first tarot reading session and I was honestly amazed by the accuracy and depth of his insights. Highly recommend to anyone seeking clarity."</div>
+            <div class="review-text">My first tarot reading session and I was amazed by the accuracy and depth of his insights. Highly recommend to anyone seeking genuine clarity.</div>
             <div class="review-author">— Anjali T., Mumbai</div>
           </div>
           <div class="review-item">
             <div class="review-stars">★★★★★</div>
-            <div class="review-text">"ধন্যবাদ! আপুনি মোক সকলো বোৰ ইমান ধুনীয়াকৈ কৈ দিয়াৰ বাবে। মই আচৰিত হৈ গৈছো — সকলো সত্য বুলি ওলাইছে।"</div>
+            <div class="review-text">ধন্যবাদ! আপুনি মোক সকলো বোৰ ইমান ধুনীয়াকৈ কৈ দিয়াৰ বাবে। সকলো সত্য বুলি ওলাইছে — মই আচৰিত হৈছো।</div>
             <div class="review-author">— Kaberi B., Assam</div>
           </div>
         </div>
       </div>
-      <div class="review-dots" id="review-dots">
-        <div class="dot active" onclick="goReview(0)"></div>
-        <div class="dot" onclick="goReview(1)"></div>
-        <div class="dot" onclick="goReview(2)"></div>
-        <div class="dot" onclick="goReview(3)"></div>
+      <div class="review-controls" id="review-controls">
+        <button class="review-nav" onclick="goReview(curReview-1)">‹</button>
+        <div class="review-dots" id="review-dots">
+          <div class="dot active" onclick="goReview(0)"></div>
+          <div class="dot" onclick="goReview(1)"></div>
+          <div class="dot" onclick="goReview(2)"></div>
+          <div class="dot" onclick="goReview(3)"></div>
+        </div>
+        <button class="review-nav" onclick="goReview(curReview+1)">›</button>
       </div>
+
       <a href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK/review" target="_blank" class="gmb-link">
-        ★ Leave a Google Review →
+        ★ &nbsp;Leave a Google Review
       </a>
     </div>
-
-    <!-- Embed widget note -->
-    <div style="font-family:'Josefin Sans',sans-serif; font-size:10px; color:var(--text-dim); text-align:center; margin-top:6px; letter-spacing:1px;">
-      🔧 To embed live Google reviews, add your <a href="https://elfsight.com/google-reviews-widget/" target="_blank" style="color:var(--gold)">Elfsight</a> or <a href="https://embedsocial.com" target="_blank" style="color:var(--gold)">EmbedSocial</a> widget code above
-    </div>
   </div>
 
-  <div class="divider animate-in" style="animation-delay:0.5s">
+  <div class="divider anim" style="animation-delay:0.45s">
     <div class="divider-line"></div>
-    <span class="divider-icon">✦</span>
+    <div class="divider-gem"></div>
     <div class="divider-line"></div>
   </div>
 
-  <!-- SOCIAL LINKS -->
-  <div class="animate-in" style="animation-delay:0.55s">
+  <!-- ===== SOCIAL ===== -->
+  <div class="anim" style="animation-delay:0.5s">
     <div class="section-label">✦ Connect With Himu ✦</div>
     <div class="social-grid">
       <a href="https://tarotwithhimu.com" target="_blank" class="social-btn">
@@ -1046,28 +1299,28 @@
         <span class="s-label">YouTube</span>
       </a>
     </div>
-    <a href="https://tarotwithhimu.com" target="_blank" class="cta-btn cta-outline">
+    <a href="https://tarotwithhimu.com" target="_blank" class="cta-btn cta-outline" style="text-decoration:none">
       <span class="btn-icon">🌐</span> Visit Full Website
     </a>
   </div>
 
-  <!-- FOOTER -->
-  <div class="footer animate-in" style="animation-delay:0.6s">
+  <!-- ===== FOOTER ===== -->
+  <div class="footer anim" style="animation-delay:0.55s">
     <div class="footer-name">✦ Tarot With Himu ✦</div>
     <div class="footer-copy">Himangshu · Certified Astrologer · Guwahati, Assam</div>
-    <div class="footer-copy" style="margin-top:4px">© 2025 TarotWithHimu.com · All rights reserved</div>
+    <div class="footer-copy">© 2025 TarotWithHimu.com · All rights reserved</div>
   </div>
 
 </div>
 
-<!-- CONSULTATION MODAL -->
+<!-- ===== CONSULTATION MODAL ===== -->
 <div class="modal-overlay" id="modal">
-  <div class="modal" style="position:relative">
+  <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-title">Book a Session</div>
     <div class="modal-sub">Choose your service &amp; connect with Himu</div>
 
-    <div class="section-label" style="margin-bottom:10px">Select Service</div>
+    <div class="section-label" style="margin-bottom:12px; text-align:left">Select Service</div>
     <div class="service-select" id="svc-select">
       <div class="svc-option" onclick="selSvc(this)">🃏 Tarot</div>
       <div class="svc-option" onclick="selSvc(this)">♈ Astrology</div>
@@ -1077,142 +1330,160 @@
       <div class="svc-option" onclick="selSvc(this)">🌟 Life Guide</div>
     </div>
 
-    <div class="modal-form">
-      <div class="form-group">
-        <label class="form-label">Your Name</label>
-        <input class="form-input" type="text" id="b-name" placeholder="Full name">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Phone / WhatsApp</label>
-        <input class="form-input" type="tel" id="b-phone" placeholder="+91 XXXXX XXXXX">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Date of Birth</label>
-        <input class="form-input" type="date" id="b-dob">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Your Concern</label>
-        <input class="form-input" type="text" id="b-concern" placeholder="Love · Career · Family · Health...">
-      </div>
-      <button class="tool-btn" onclick="submitBooking()" style="margin-top:8px">✨ Send Booking Request</button>
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input class="form-input" type="text" id="b-name" placeholder="Full name">
     </div>
-    <div class="modal-footer">Online &amp; In-person available · Guwahati &amp; Worldwide</div>
+    <div class="form-group">
+      <label class="form-label">Phone / WhatsApp</label>
+      <input class="form-input" type="tel" id="b-phone" placeholder="+91 XXXXX XXXXX">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Date of Birth</label>
+      <input class="form-input" type="date" id="b-dob">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Concern</label>
+      <input class="form-input" type="text" id="b-concern" placeholder="Love · Career · Family · Health...">
+    </div>
+    <button class="tool-btn" onclick="submitBooking()" style="margin-top:10px; font-size:11px; letter-spacing:2px">
+      ✨ &nbsp;Send via WhatsApp
+    </button>
+    <div class="modal-footer">Online &amp; In-person · Guwahati &amp; Worldwide</div>
   </div>
 </div>
 
 <script>
-// ---- REVIEW CAROUSEL ----
+// ============ REVIEW CAROUSEL ============
 let curReview = 0;
+const totalReviews = 4;
 const track = document.getElementById('reviews-track');
-const dots = document.querySelectorAll('.dot');
+const dotsEl = document.querySelectorAll('.dot');
 
 function goReview(i) {
-  curReview = i;
-  track.style.transform = `translateX(-${i * 100}%)`;
-  dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  curReview = ((i % totalReviews) + totalReviews) % totalReviews;
+  track.style.transform = `translateX(-${curReview * 100}%)`;
+  dotsEl.forEach((d, idx) => d.classList.toggle('active', idx === curReview));
 }
 
-setInterval(() => {
-  goReview((curReview + 1) % 4);
-}, 4500);
+let autoPlay = setInterval(() => goReview(curReview + 1), 5000);
+track.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
+track.parentElement.addEventListener('mouseleave', () => {
+  autoPlay = setInterval(() => goReview(curReview + 1), 5000);
+});
 
-// ---- TOOL TABS ----
-function switchTool(id) {
+// Hide fallback carousel if Featurable widget loaded
+window.addEventListener('load', () => {
+  const widget = document.getElementById('featurable-6383c159-93aa-4f0c-b833-d778fba0aa5a');
+  if (widget && widget.children.length > 0) {
+    document.getElementById('review-carousel-fallback').style.display = 'none';
+    document.getElementById('review-controls').style.display = 'none';
+  }
+});
+
+// ============ TOOL TABS ============
+function switchTool(id, btn) {
   document.querySelectorAll('.tool-form').forEach(f => f.classList.remove('active'));
   document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tool-' + id).classList.add('active');
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
-// ---- MATCHMAKING ----
-const compatMessages = [
-  {range:[85,100], title:"Twin Flames 🔥", msg:"An extraordinary cosmic bond. Your energies mirror each other beautifully — this is a rare, destined connection."},
-  {range:[70,84], title:"Soulmates ✨", msg:"Deep mutual understanding and strong attraction. A powerful, loving relationship built on trust and harmony."},
-  {range:[55,69], title:"Good Match 💛", msg:"Compatible with good potential. With communication and understanding, this relationship can flourish beautifully."},
-  {range:[40,54], title:"Moderate Match 🌙", msg:"Some differences exist but love can overcome them. Patience, understanding, and compromise will be the keys."},
-  {range:[0,39], title:"Challenging ⚡", msg:"Significant differences in energy. Not impossible, but will require deep work. Consult Himu for personalised guidance."},
-];
+// ============ NUMEROLOGY HELPERS ============
+const charMap = {a:1,b:2,c:3,d:4,e:5,f:8,g:3,h:5,i:1,j:1,k:2,l:3,m:4,n:5,o:7,p:8,q:1,r:2,s:3,t:4,u:6,v:6,w:6,x:5,y:1,z:7};
 
 function nameToNum(name) {
-  const map = {a:1,b:2,c:3,d:4,e:5,f:8,g:3,h:5,i:1,j:1,k:2,l:3,m:4,n:5,o:7,p:8,q:1,r:2,s:3,t:4,u:6,v:6,w:6,x:5,y:1,z:7};
-  return name.toLowerCase().replace(/[^a-z]/g,'').split('').reduce((s,c)=>s+(map[c]||0),0);
+  return name.toLowerCase().replace(/[^a-z]/g,'').split('').reduce((s,c) => s + (charMap[c] || 0), 0);
 }
 function dobToNum(d) {
-  if(!d) return 0;
-  return d.replace(/-/g,'').split('').reduce((s,c)=>s+parseInt(c),0);
+  if (!d) return 0;
+  return d.replace(/-/g,'').split('').reduce((s,c) => s + parseInt(c), 0);
 }
-function reduce(n) { while(n>9&&n!==11&&n!==22&&n!==33) n=String(n).split('').reduce((s,c)=>s+parseInt(c),0); return n; }
+function reduce(n) {
+  while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
+    n = String(n).split('').reduce((s,c) => s + parseInt(c), 0);
+  }
+  return n;
+}
+
+// ============ MATCHMAKING ============
+const compatMessages = [
+  {range:[85,100], title:"Twin Flames 🔥", msg:"An extraordinary cosmic bond. Your energies mirror each other beautifully — this is a rare, destined connection written in the stars."},
+  {range:[70,84], title:"Soulmates ✨", msg:"Deep mutual understanding and strong attraction. A powerful, loving relationship built on trust, harmony, and shared destiny."},
+  {range:[55,69], title:"Good Match 💛", msg:"Compatible with wonderful potential. With open communication and understanding, this relationship can flourish and deepen beautifully."},
+  {range:[40,54], title:"Moderate Match 🌙", msg:"Some differences exist, but love can overcome them. Patience, understanding, and compromise will be the sacred keys."},
+  {range:[0,39], title:"Challenging ⚡", msg:"Significant differences in energy exist. Not impossible, but requires deep work. Consult Himu for personalised guidance."},
+];
 
 function calcMatch() {
   const n1 = document.getElementById('m-name1').value;
   const n2 = document.getElementById('m-name2').value;
-  if(!n1||!n2){alert('Please enter both names');return;}
+  if (!n1 || !n2) { alert('Please enter both names'); return; }
   const d1 = document.getElementById('m-dob1').value;
   const d2 = document.getElementById('m-dob2').value;
   const num1 = reduce(nameToNum(n1) + dobToNum(d1));
   const num2 = reduce(nameToNum(n2) + dobToNum(d2));
-  const diff = Math.abs(num1-num2);
-  const score = Math.round(100 - (diff/9)*60 + (Math.random()*15));
-  const clampedScore = Math.min(100, Math.max(20, score));
-  const found = compatMessages.find(c=>clampedScore>=c.range[0]&&clampedScore<=c.range[1]);
+  const diff = Math.abs(num1 - num2);
+  const raw = Math.round(100 - (diff / 9) * 60 + (Math.random() * 15));
+  const score = Math.min(100, Math.max(20, raw));
+  const found = compatMessages.find(c => score >= c.range[0] && score <= c.range[1]);
   document.getElementById('match-title').textContent = found.title;
-  document.getElementById('match-score').textContent = clampedScore + '%';
+  document.getElementById('match-score').textContent = score + '%';
   document.getElementById('match-text').textContent = found.msg;
   const bar = document.getElementById('match-bar');
   bar.style.width = '0%';
-  setTimeout(()=>{ bar.style.width = clampedScore+'%'; }, 100);
-  const res = document.getElementById('res-match');
-  res.classList.add('show');
+  setTimeout(() => { bar.style.width = score + '%'; }, 100);
+  document.getElementById('res-match').classList.add('show');
 }
 
-// ---- NAME ANALYSIS ----
+// ============ NAME ANALYSIS ============
 const nameVibrations = {
-  1:"Leadership & Independence — You are a natural pioneer, destined to forge your own path.",
-  2:"Harmony & Partnership — Your soul seeks balance, cooperation, and deep connections.",
+  1:"Leadership & Independence — You are a natural pioneer, destined to forge your own path with courage and vision.",
+  2:"Harmony & Partnership — Your soul seeks balance, cooperation, and deep emotional connections.",
   3:"Creativity & Expression — A gifted communicator, you bring joy and inspiration wherever you go.",
   4:"Stability & Foundation — Disciplined and dependable, you build lasting structures in life.",
   5:"Freedom & Adventure — Change energises you. You thrive through exploration and new experiences.",
   6:"Love & Responsibility — Nurturing by nature, you are the healer and caretaker of your circle.",
   7:"Wisdom & Spirituality — A deep thinker and seeker of truth, the universe speaks through you.",
   8:"Power & Abundance — Ambitious and magnetic, material success and leadership are your destiny.",
-  9:"Compassion & Completion — An old soul, you carry wisdom from many lifetimes.",
+  9:"Compassion & Completion — An old soul, you carry wisdom and grace from many lifetimes.",
   11:"Master Intuitive — A spiritual messenger with heightened sensitivity and visionary gifts.",
-  22:"Master Builder — Rare potential to turn grand dreams into lasting reality.",
-  33:"Master Teacher — Embodiment of compassion and healing on a global scale.",
+  22:"Master Builder — Rare potential to turn grand dreams into lasting, magnificent reality.",
+  33:"Master Teacher — Embodiment of compassion and healing on a truly global scale.",
 };
 
 function calcName() {
   const name = document.getElementById('na-name').value;
-  if(!name){alert('Please enter your name');return;}
+  if (!name) { alert('Please enter your name'); return; }
   const dob = document.getElementById('na-dob').value;
-  const nameNum = reduce(nameToNum(name) + dobToNum(dob));
-  document.getElementById('name-num').textContent = nameNum;
-  document.getElementById('name-text').textContent = nameVibrations[nameNum] || nameVibrations[reduce(nameNum)];
+  const n = reduce(nameToNum(name) + dobToNum(dob));
+  document.getElementById('name-num').textContent = n;
+  document.getElementById('name-text').textContent = nameVibrations[n] || nameVibrations[reduce(n)];
   document.getElementById('res-name').classList.add('show');
 }
 
-// ---- TAROT DRAW ----
+// ============ TAROT DRAW ============
 const tarotCards = [
   {emoji:'☀️',name:'The Sun',meaning:'Radiant success, joy, and vitality surround you. A time of celebration and positive energy is at hand.'},
-  {emoji:'🌙',name:'The Moon',meaning:'Trust your intuition above all else. Hidden truths are being revealed. Navigate with inner light.'},
+  {emoji:'🌙',name:'The Moon',meaning:'Trust your intuition above all else. Hidden truths are being revealed. Navigate with your inner light.'},
   {emoji:'⭐',name:'The Star',meaning:'Hope, healing, and divine guidance flow toward you. You are blessed and protected on your path.'},
-  {emoji:'⚡',name:'The Tower',meaning:'A sudden change brings transformation. Release what no longer serves — liberation awaits.'},
-  {emoji:'🌍',name:'The World',meaning:'Completion, achievement, and wholeness. A cycle is fulfilled. Celebrate how far you have come.'},
-  {emoji:'❤️',name:'The Lovers',meaning:'Deep connection, harmony, and meaningful choices. Follow your heart — alignment is near.'},
-  {emoji:'⚖️',name:'Justice',meaning:'Truth and balance prevail. Fair outcomes are coming. Act with integrity and trust the process.'},
-  {emoji:'🐉',name:'Strength',meaning:'Inner courage and calm power are your greatest gifts. Face challenges with grace and confidence.'},
+  {emoji:'⚡',name:'The Tower',meaning:'A sudden change brings transformation. Release what no longer serves — true liberation awaits.'},
+  {emoji:'🌍',name:'The World',meaning:'Completion, achievement, and wholeness. A great cycle is fulfilled. Celebrate how far you have come.'},
+  {emoji:'❤️',name:'The Lovers',meaning:'Deep connection, harmony, and meaningful choices. Follow your heart — divine alignment is near.'},
+  {emoji:'⚖️',name:'Justice',meaning:'Truth and balance prevail. Fair outcomes are coming. Act with integrity and trust the sacred process.'},
+  {emoji:'🐉',name:'Strength',meaning:'Inner courage and calm power are your greatest gifts. Face all challenges with grace and confidence.'},
   {emoji:'🔮',name:'The High Priestess',meaning:'Divine feminine wisdom speaks. Pause, listen within, and trust what your soul already knows.'},
-  {emoji:'🌀',name:'The Wheel',meaning:'Fortunate cycles are turning in your favour. Embrace change — destiny is moving with you.'},
-  {emoji:'🦅',name:'The Hermit',meaning:'Solitude brings profound wisdom. Look within. The answers you seek live in your silence.'},
-  {emoji:'🪄',name:'The Magician',meaning:'You have all the tools you need right now. Your power to manifest is at its peak — act!'},
+  {emoji:'🌀',name:'The Wheel',meaning:'Fortunate cycles are turning in your favour. Embrace change — destiny is beautifully moving with you.'},
+  {emoji:'🦅',name:'The Hermit',meaning:'Solitude brings profound wisdom. Look within. The answers you seek live in the stillness of your silence.'},
+  {emoji:'🪄',name:'The Magician',meaning:'You have all the tools you need right now. Your power to manifest is at its peak — take bold action!'},
 ];
 
 let drawnCard = null;
 function drawTarot() {
-  drawnCard = tarotCards[Math.floor(Math.random()*tarotCards.length)];
+  drawnCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
   document.getElementById('t-emoji').textContent = drawnCard.emoji;
   document.getElementById('t-name').textContent = drawnCard.name;
-  document.getElementById('tarot-title').textContent = 'Your Card Awaits...';
+  document.getElementById('tarot-title').textContent = 'Your Card Awaits…';
   document.getElementById('tarot-meaning').style.display = 'none';
   const card = document.getElementById('tarot-card');
   card.classList.remove('flipped');
@@ -1220,10 +1491,10 @@ function drawTarot() {
 }
 
 function flipCard() {
-  if(!drawnCard) return;
+  if (!drawnCard) return;
   const card = document.getElementById('tarot-card');
   card.classList.toggle('flipped');
-  if(card.classList.contains('flipped')) {
+  if (card.classList.contains('flipped')) {
     document.getElementById('tarot-title').textContent = drawnCard.name;
     const m = document.getElementById('tarot-meaning');
     m.textContent = drawnCard.meaning;
@@ -1231,54 +1502,49 @@ function flipCard() {
   }
 }
 
-// ---- LIFE PATH ----
+// ============ LIFE PATH ============
 const lifePathMeanings = {
-  1:"The Leader — Independent, pioneering, and self-reliant. Your path is to lead and innovate.",
-  2:"The Peacemaker — Cooperative, diplomatic, and sensitive. Your gift is unity and harmony.",
-  3:"The Creator — Expressive, joyful, and artistic. Your path shines through creative expression.",
-  4:"The Builder — Practical, disciplined, and reliable. You create lasting foundations.",
-  5:"The Freedom Seeker — Adventurous, versatile, and dynamic. Change is your constant.",
-  6:"The Nurturer — Loving, responsible, and caring. Your path is service to family and community.",
-  7:"The Seeker — Analytical, spiritual, and introspective. Truth is your life's great quest.",
-  8:"The Achiever — Ambitious, authoritative, and powerful. Material and spiritual mastery await.",
-  9:"The Humanitarian — Compassionate, wise, and giving. Your soul serves the greater good.",
-  11:"Master Number 11 — Highly intuitive spiritual messenger. Enlightenment is your path.",
-  22:"Master Number 22 — The Master Builder with unlimited potential to create on a grand scale.",
-  33:"Master Number 33 — The Master Teacher whose compassion can uplift all of humanity.",
+  1:"The Leader — Independent, pioneering, and self-reliant. Your path is to lead, innovate, and inspire.",
+  2:"The Peacemaker — Cooperative, diplomatic, and sensitive. Your gift is unity, harmony, and deep empathy.",
+  3:"The Creator — Expressive, joyful, and artistic. Your path shines brightest through creative expression.",
+  4:"The Builder — Practical, disciplined, and reliable. You create lasting foundations for yourself and others.",
+  5:"The Freedom Seeker — Adventurous, versatile, and dynamic. Change and exploration are your life's fuel.",
+  6:"The Nurturer — Loving, responsible, and caring. Your path is devoted service to family and community.",
+  7:"The Seeker — Analytical, spiritual, and introspective. Truth and wisdom are your life's great quest.",
+  8:"The Achiever — Ambitious, authoritative, and powerful. Material and spiritual mastery are your destiny.",
+  9:"The Humanitarian — Compassionate, wise, and giving. Your soul is here to serve the greater good.",
+  11:"Master Number 11 — A highly intuitive spiritual messenger. Enlightenment and vision are your sacred path.",
+  22:"Master Number 22 — The Master Builder with unlimited potential to create on a magnificent grand scale.",
+  33:"Master Number 33 — The Master Teacher whose boundless compassion can uplift all of humanity.",
 };
 
 function calcLifePath() {
   const dob = document.getElementById('lp-dob').value;
   const name = document.getElementById('lp-name').value;
-  if(!dob&&!name){alert('Please enter your details');return;}
-  const dobNum = dobToNum(dob);
-  const nameNum = nameToNum(name);
-  const lp = reduce(dobNum + nameNum);
+  if (!dob && !name) { alert('Please enter your details'); return; }
+  const lp = reduce(dobToNum(dob) + nameToNum(name));
   document.getElementById('lp-num').textContent = lp;
   document.getElementById('lp-text').textContent = lifePathMeanings[lp] || lifePathMeanings[reduce(lp)];
   document.getElementById('res-num').classList.add('show');
 }
 
-// ---- MODAL ----
+// ============ MODAL ============
 function openModal(service) {
   document.getElementById('modal').classList.add('open');
-  if(service) {
+  document.body.style.overflow = 'hidden';
+  if (service) {
     document.querySelectorAll('.svc-option').forEach(o => {
-      if(o.textContent.toLowerCase().includes(service.toLowerCase().split(' ')[0])) {
-        o.classList.add('sel');
-      }
+      o.classList.toggle('sel', o.textContent.toLowerCase().includes(service.toLowerCase().split(' ')[0]));
     });
   }
-  document.body.style.overflow = 'hidden';
 }
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
 }
 document.getElementById('modal').addEventListener('click', function(e) {
-  if(e.target === this) closeModal();
+  if (e.target === this) closeModal();
 });
-
 function selSvc(el) {
   document.querySelectorAll('.svc-option').forEach(o => o.classList.remove('sel'));
   el.classList.add('sel');
@@ -1289,23 +1555,31 @@ function submitBooking() {
   const phone = document.getElementById('b-phone').value;
   const dob = document.getElementById('b-dob').value;
   const concern = document.getElementById('b-concern').value;
-  const selSvcEl = document.querySelector('.svc-option.sel');
-  const service = selSvcEl ? selSvcEl.textContent.trim() : 'Consultation';
-  if(!name||!phone){alert('Please fill in your name and phone number');return;}
-  const msg = `Hi Himu! I'd like to book a ${service}.\n\nName: ${name}\nPhone: ${phone}\nDOB: ${dob||'Not provided'}\nConcern: ${concern||'General guidance'}`;
-  const waUrl = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`;
+  const selEl = document.querySelector('.svc-option.sel');
+  const service = selEl ? selEl.textContent.trim() : 'General Consultation';
+  if (!name || !phone) { alert('Please fill in your name and phone number'); return; }
+  const msg = `🙏 Hi Himu! I'd like to book a *${service}*.\n\n👤 Name: ${name}\n📱 Phone: ${phone}\n🗓️ DOB: ${dob || 'Not provided'}\n💬 Concern: ${concern || 'General guidance'}\n\nI found you through your link!`;
+  const waUrl = `https://wa.me/916901529861?text=${encodeURIComponent(msg)}`;
   window.open(waUrl, '_blank');
   closeModal();
 }
 
-// ---- STAGGER ANIMATIONS ----
-const animEls = document.querySelectorAll('.animate-in');
+// ============ SCROLL ANIMATIONS ============
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if(e.isIntersecting) { e.target.style.opacity=1; e.target.style.transform='translateY(0)'; }
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
   });
-}, {threshold:0.1});
-animEls.forEach(el => observer.observe(el));
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.anim').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(22px)';
+  el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+  observer.observe(el);
+});
 </script>
 </body>
 </html>
