@@ -29,7 +29,6 @@
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -41,9 +40,7 @@
   }
 
   /* ============ BACKGROUND ============ */
-  .bg-layer {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  }
+  .bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
   .bg-nebula {
     background:
@@ -74,7 +71,6 @@
       radial-gradient(2.5px 2.5px at 67% 78%, rgba(201,168,76,0.4) 0%, transparent 100%);
   }
 
-  /* Twinkling animation */
   .bg-twinkle {
     animation: twinkle 6s ease-in-out infinite alternate;
     background-image:
@@ -99,16 +95,9 @@
   }
 
   /* ============ HEADER ============ */
-  .header {
-    text-align: center;
-    margin-bottom: 36px;
-  }
+  .header { text-align: center; margin-bottom: 36px; }
 
-  .avatar-scene {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 20px;
-  }
+  .avatar-scene { position: relative; display: inline-block; margin-bottom: 20px; }
 
   .avatar-glow {
     position: absolute; inset: -20px;
@@ -124,19 +113,12 @@
     position: relative;
     background: radial-gradient(circle at 35% 35%, #2d1270, #0d0825);
     border: 1.5px solid var(--gold);
-    box-shadow:
-      0 0 0 6px rgba(201,168,76,0.06),
-      0 0 40px rgba(201,168,76,0.25),
-      inset 0 0 30px rgba(80,20,160,0.5);
+    box-shadow: 0 0 0 6px rgba(201,168,76,0.06), 0 0 40px rgba(201,168,76,0.25), inset 0 0 30px rgba(80,20,160,0.5);
   }
 
   .avatar-emoji { font-size: 56px; line-height: 1; filter: drop-shadow(0 0 12px rgba(201,168,76,0.5)); }
 
-  .orbit-1, .orbit-2 {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px dashed rgba(201,168,76,0.3);
-  }
+  .orbit-1, .orbit-2 { position: absolute; border-radius: 50%; border: 1px dashed rgba(201,168,76,0.3); }
   .orbit-1 { inset: -14px; animation: spin 20s linear infinite; }
   .orbit-2 { inset: -26px; animation: spin 35s linear infinite reverse; border-color: rgba(201,168,76,0.15); border-style: dotted; }
 
@@ -157,26 +139,16 @@
 
   .name {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 24px; font-weight: 700;
     background: linear-gradient(135deg, #f5e6bc 0%, #c9a84c 40%, #e8c97a 70%, #c9a84c 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-    text-shadow: none;
+    letter-spacing: 1px; margin-bottom: 6px;
     filter: drop-shadow(0 2px 12px rgba(201,168,76,0.3));
   }
 
-  .tagline {
-    font-size: 15px;
-    font-style: italic;
-    color: var(--text-dim);
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-  }
+  .tagline { font-size: 15px; font-style: italic; color: var(--text-dim); font-weight: 300; letter-spacing: 1px; margin-bottom: 10px; }
 
   .location-badge {
     display: inline-flex; align-items: center; gap: 6px;
@@ -185,779 +157,309 @@
     border-radius: 20px;
     background: rgba(201,168,76,0.06);
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    color: var(--gold);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
+    font-size: 10px; color: var(--gold);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
   }
 
-  .header-meta {
-    display: flex; align-items: center; justify-content: center; gap: 16px;
-    flex-wrap: wrap;
-  }
-
+  .header-meta { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
   .stars-row { color: var(--gold); font-size: 15px; letter-spacing: 3px; }
-
-  .cert-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.8;
-  }
+  .cert-badge { display: inline-flex; align-items: center; gap: 5px; font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
 
   .live-badge {
     display: inline-flex; align-items: center; gap: 6px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #6de89a;
-    margin-top: 10px;
-    padding: 5px 12px;
-    border: 1px solid rgba(109,232,154,0.25);
-    border-radius: 20px;
-    background: rgba(109,232,154,0.05);
+    font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: #6de89a; margin-top: 10px; padding: 5px 12px;
+    border: 1px solid rgba(109,232,154,0.25); border-radius: 20px; background: rgba(109,232,154,0.05);
   }
-  .live-dot {
-    width: 7px; height: 7px;
-    background: #6de89a; border-radius: 50%;
-    box-shadow: 0 0 8px #6de89a;
-    animation: livePulse 1.5s ease infinite;
-  }
+  .live-dot { width: 7px; height: 7px; background: #6de89a; border-radius: 50%; box-shadow: 0 0 8px #6de89a; animation: livePulse 1.5s ease infinite; }
 
   /* ============ DIVIDER ============ */
-  .divider {
-    display: flex; align-items: center; gap: 12px;
-    margin: 26px 0;
-  }
+  .divider { display: flex; align-items: center; gap: 12px; margin: 26px 0; }
   .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.3; }
-  .divider-gem {
-    width: 20px; height: 20px;
-    background: var(--deep);
-    border: 1px solid rgba(201,168,76,0.4);
-    transform: rotate(45deg);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .divider-gem::after {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--gold);
-    transform: rotate(0deg);
-    border-radius: 1px;
-    opacity: 0.7;
-  }
+  .divider-gem { width: 20px; height: 20px; background: var(--deep); border: 1px solid rgba(201,168,76,0.4); transform: rotate(45deg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .divider-gem::after { content: ''; width: 6px; height: 6px; background: var(--gold); transform: rotate(0deg); border-radius: 1px; opacity: 0.7; }
 
   /* ============ SECTION LABEL ============ */
-  .section-label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 3.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-align: center;
-    margin-bottom: 16px;
-    opacity: 0.7;
-  }
+  .section-label { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 16px; opacity: 0.7; }
 
   /* ============ CTA BUTTONS ============ */
   .cta-btn {
     display: flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%;
-    padding: 17px 24px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-    margin-bottom: 10px;
-    cursor: pointer;
-    border: none;
-    position: relative;
-    overflow: hidden;
+    width: 100%; padding: 17px 24px; border-radius: var(--radius);
+    text-decoration: none; font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1); margin-bottom: 10px;
+    cursor: pointer; border: none; position: relative; overflow: hidden;
   }
 
   .cta-primary {
     background: linear-gradient(135deg, #d4a84c 0%, #8b6010 40%, #c9a84c 70%, #f0c060 100%);
     background-size: 200% 200%;
-    color: #07040f;
-    font-weight: 700;
+    color: #07040f; font-weight: 700;
     box-shadow: 0 4px 24px rgba(201,168,76,0.4), 0 1px 0 rgba(255,255,255,0.2) inset;
-    animation: shimmer 4s ease infinite;
-    letter-spacing: 3px;
+    animation: shimmer 4s ease infinite; letter-spacing: 3px;
   }
   .cta-primary::before {
-    content: '';
-    position: absolute; top: 0; left: -150%;
+    content: ''; position: absolute; top: 0; left: -150%;
     width: 80%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
     animation: sweep 3.5s ease infinite 1s;
   }
-  .cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 36px rgba(201,168,76,0.55), 0 1px 0 rgba(255,255,255,0.2) inset;
-  }
+  .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(201,168,76,0.55), 0 1px 0 rgba(255,255,255,0.2) inset; }
 
-  .cta-whatsapp {
-    background: var(--wa-bg);
-    border: 1.5px solid rgba(37,211,102,0.35);
-    color: #7de8a4;
-    backdrop-filter: blur(8px);
-  }
-  .cta-whatsapp:hover {
-    background: rgba(37,211,102,0.18);
-    border-color: rgba(37,211,102,0.6);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(37,211,102,0.2);
-  }
+  .cta-whatsapp { background: var(--wa-bg); border: 1.5px solid rgba(37,211,102,0.35); color: #7de8a4; backdrop-filter: blur(8px); }
+  .cta-whatsapp:hover { background: rgba(37,211,102,0.18); border-color: rgba(37,211,102,0.6); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,211,102,0.2); }
 
-  .cta-outline {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    backdrop-filter: blur(8px);
-  }
-  .cta-outline:hover {
-    border-color: var(--border-hover);
-    color: var(--gold-light);
-    transform: translateY(-2px);
-    background: var(--card-hover);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  }
+  .cta-outline { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-dim); backdrop-filter: blur(8px); }
+  .cta-outline:hover { border-color: var(--border-hover); color: var(--gold-light); transform: translateY(-2px); background: var(--card-hover); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
 
   .btn-icon { font-size: 19px; flex-shrink: 0; }
 
   /* ============ SERVICE CARDS ============ */
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+
+  .service-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 12px 16px; text-align: center; cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--text); backdrop-filter: blur(10px); position: relative; overflow: hidden;
+  }
+  .service-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%); opacity: 0; transition: opacity 0.3s; }
+  .service-card:hover::before { opacity: 1; }
+  .service-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,168,76,0.1); }
+  .sc-icon { font-size: 28px; filter: drop-shadow(0 0 8px rgba(201,168,76,0.3)); }
+  .sc-name { font-family: 'Josefin Sans', sans-serif; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-light); font-weight: 600; }
+  .sc-sub { font-size: 12px; color: var(--text-dimmer); font-style: italic; line-height: 1.3; }
+
+  /* ============ FREE TOOLS CARDS ============ */
+  .tools-grid {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     margin-bottom: 12px;
   }
 
-  .service-card {
+  .tool-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 18px 12px 16px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 16px 18px;
+    text-decoration: none;
     color: var(--text);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
   }
-  .service-card::before {
+
+  .tool-card::before {
     content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.05), transparent);
+    transition: left 0.6s ease;
+  }
+  .tool-card:hover::before { left: 150%; }
+
+  .tool-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 0% 50%, rgba(201,168,76,0.06) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s;
   }
-  .service-card:hover::before { opacity: 1; }
-  .service-card:hover {
+  .tool-card:hover::after { opacity: 1; }
+
+  .tool-card:hover {
     border-color: rgba(201,168,76,0.5);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,168,76,0.1);
-  }
-  .sc-icon { font-size: 28px; filter: drop-shadow(0 0 8px rgba(201,168,76,0.3)); }
-  .sc-name {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10.5px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    font-weight: 600;
-  }
-  .sc-sub {
-    font-size: 12px;
-    color: var(--text-dimmer);
-    font-style: italic;
-    line-height: 1.3;
+    transform: translateX(4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,168,76,0.08);
   }
 
-  /* ============ TOOL PANEL ============ */
-  .tool-panel {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 10px;
-    backdrop-filter: blur(12px);
+  .tool-card-icon {
+    width: 50px; height: 50px;
+    border-radius: 10px;
+    background: radial-gradient(circle at 35% 35%, rgba(201,168,76,0.15), rgba(50,10,120,0.4));
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(201,168,76,0.2));
+    position: relative; z-index: 1;
   }
 
-  .tool-tabs {
-    display: flex;
-    border-bottom: 1px solid var(--border);
-    background: rgba(0,0,0,0.2);
-  }
-  .tool-tab {
+  .tool-card-body {
     flex: 1;
-    padding: 11px 4px;
+    position: relative; z-index: 1;
+  }
+
+  .tool-card-name {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 9.5px;
-    letter-spacing: 0.8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
-    color: var(--text-dimmer);
-    cursor: pointer;
-    text-align: center;
-    border: none;
-    background: transparent;
-    transition: all 0.25s;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-  }
-  .tool-tab.active {
-    color: var(--gold);
-    border-bottom-color: var(--gold);
-    background: rgba(201,168,76,0.04);
-  }
-  .tool-tab:hover:not(.active) { color: var(--text-dim); }
-
-  .tool-content { padding: 22px 20px; }
-  .tool-form { display: none; }
-  .tool-form.active { display: block; animation: fadeSlideUp 0.35s ease both; }
-
-  .tool-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 14px;
     color: var(--gold-light);
     margin-bottom: 4px;
-    text-align: center;
   }
-  .tool-desc {
+
+  .tool-card-desc {
     font-size: 13px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-bottom: 18px;
-    font-style: italic;
-  }
-
-  .form-group { margin-bottom: 13px; }
-  .form-label {
-    display: block;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 9px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 6px;
-    opacity: 0.8;
-  }
-  .form-input {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 10px 14px;
-    color: var(--text);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.25s, background 0.25s;
-  }
-  .form-input:focus {
-    border-color: rgba(201,168,76,0.55);
-    background: rgba(201,168,76,0.04);
-  }
-  .form-input::placeholder { color: var(--text-dimmer); }
-  select.form-input { cursor: pointer; }
-  select.form-input option { background: #1a0d38; color: var(--text); }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-  .tool-btn {
-    width: 100%;
-    padding: 13px;
-    background: rgba(201,168,76,0.12);
-    border: 1px solid rgba(201,168,76,0.45);
-    border-radius: var(--radius-sm);
-    color: var(--gold-light);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.25s;
-    margin-top: 4px;
-  }
-  .tool-btn:hover {
-    background: rgba(201,168,76,0.22);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(201,168,76,0.2);
-  }
-
-  .tool-result {
-    margin-top: 18px;
-    padding: 18px;
-    background: rgba(201,168,76,0.05);
-    border: 1px solid rgba(201,168,76,0.18);
-    border-radius: var(--radius-sm);
-    display: none;
-  }
-  .tool-result.show { display: block; animation: fadeSlideUp 0.4s ease both; }
-
-  .result-headline {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 12px;
-    color: var(--gold);
-    margin-bottom: 8px;
-    text-align: center;
-  }
-  .result-text {
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--text-dim);
-    text-align: center;
-    font-style: italic;
-  }
-  .result-number {
-    font-size: 52px;
-    color: var(--gold-light);
-    text-align: center;
-    font-family: 'Cinzel Decorative', serif;
-    display: block;
-    margin: 6px 0 10px;
-    filter: drop-shadow(0 0 20px rgba(201,168,76,0.45));
-    line-height: 1;
-  }
-
-  .compat-meter {
-    margin: 14px 0 6px;
-    height: 6px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .compat-fill {
-    height: 100%;
-    border-radius: 10px;
-    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
-    background: linear-gradient(90deg, #8b4513, #c9a84c 50%, #6de89a);
-  }
-  .compat-label {
-    display: flex; justify-content: space-between;
-    font-size: 10px;
     color: var(--text-dimmer);
-    letter-spacing: 1px;
-    font-family: 'Josefin Sans', sans-serif;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-
-  /* Tarot card flip */
-  .tarot-result { text-align: center; }
-  .card-flip-wrap {
-    perspective: 700px;
-    width: 105px; height: 168px;
-    margin: 14px auto 8px;
-    cursor: pointer;
-  }
-  .card-flip {
-    width: 100%; height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.75s cubic-bezier(0.4,0,0.2,1);
-  }
-  .card-flip.flipped { transform: rotateY(180deg); }
-  .card-face {
-    position: absolute; inset: 0;
-    backface-visibility: hidden;
-    border-radius: 8px;
-    border: 1px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-  }
-  .card-back {
-    background: radial-gradient(circle at 40% 35%, #2d1270, #0d0825);
-    font-size: 30px;
-  }
-  .card-back-pattern {
-    position: absolute; inset: 6px;
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 5px;
-  }
-  .card-front {
-    background: linear-gradient(160deg, #1d0945, #0d0825);
-    transform: rotateY(180deg);
-    padding: 12px 8px;
-  }
-  .card-front .c-emoji { font-size: 36px; }
-  .card-front .c-name {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 8px;
-    color: var(--gold);
-    text-align: center;
-    letter-spacing: 0.5px;
+    font-style: italic;
     line-height: 1.4;
   }
-  .tap-hint { font-size: 11px; color: var(--text-dimmer); font-style: italic; }
+
+  .tool-card-arrow {
+    font-size: 16px;
+    color: var(--gold);
+    opacity: 0.5;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    position: relative; z-index: 1;
+  }
+  .tool-card:hover .tool-card-arrow { opacity: 1; transform: translateX(4px); }
+
+  .tool-free-badge {
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6de89a;
+    background: rgba(109,232,154,0.1);
+    border: 1px solid rgba(109,232,154,0.25);
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-top: 5px;
+  }
 
   /* ============ REVIEWS ============ */
   .review-embed-box {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px 20px 18px;
-    margin-bottom: 10px;
-    backdrop-filter: blur(10px);
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px 20px 18px; margin-bottom: 10px; backdrop-filter: blur(10px);
   }
 
-  .gmb-header {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 18px;
-  }
-  .gmb-icon-wrap {
-    width: 38px; height: 38px;
-    background: white;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700;
-    font-size: 18px;
-    color: #4285F4;
-    flex-shrink: 0;
-    font-family: 'Josefin Sans', sans-serif;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
-  .gmb-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    color: var(--gold-light);
-    text-transform: uppercase;
-  }
+  .gmb-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .gmb-icon-wrap { width: 38px; height: 38px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: #4285F4; flex-shrink: 0; font-family: 'Josefin Sans', sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  .gmb-title { font-family: 'Josefin Sans', sans-serif; font-size: 11px; letter-spacing: 1.5px; color: var(--gold-light); text-transform: uppercase; }
   .gmb-sub { font-size: 12px; color: var(--text-dimmer); }
-  .gmb-rating {
-    margin-left: auto; text-align: right; flex-shrink: 0;
-  }
+  .gmb-rating { margin-left: auto; text-align: right; flex-shrink: 0; }
   .gmb-stars { color: var(--gold); font-size: 12px; }
-  .gmb-score {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 9px;
-    color: var(--text-dimmer);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
+  .gmb-score { font-family: 'Josefin Sans', sans-serif; font-size: 9px; color: var(--text-dimmer); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
 
-  /* Google Reviews Widget */
-  .google-reviews-widget {
-    margin-bottom: 16px;
-  }
+  .google-reviews-widget { margin-bottom: 16px; }
 
   .review-carousel { overflow: hidden; }
-  .reviews-track {
-    display: flex;
-    transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
-  }
+  .reviews-track { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
   .review-item { min-width: 100%; padding: 0 2px; }
   .review-stars { color: var(--gold); font-size: 13px; margin-bottom: 8px; letter-spacing: 2px; }
-  .review-text {
-    font-size: 14px;
-    line-height: 1.7;
-    font-style: italic;
-    color: var(--text-dim);
-    margin-bottom: 10px;
-    position: relative;
-  }
-  .review-text::before {
-    content: '"';
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 40px;
-    color: rgba(201,168,76,0.15);
-    position: absolute;
-    top: -10px; left: -5px;
-    line-height: 1;
-  }
-  .review-author {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
+  .review-text { font-size: 14px; line-height: 1.7; font-style: italic; color: var(--text-dim); margin-bottom: 10px; position: relative; }
+  .review-text::before { content: '"'; font-family: 'Cinzel Decorative', serif; font-size: 40px; color: rgba(201,168,76,0.15); position: absolute; top: -10px; left: -5px; line-height: 1; }
+  .review-author { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; }
 
-  .review-controls {
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    margin-top: 16px;
-  }
-  .review-nav {
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 28px; height: 28px;
-    color: var(--gold);
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    transition: all 0.25s;
-    flex-shrink: 0;
-  }
+  .review-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; }
+  .review-nav { background: transparent; border: 1px solid var(--border); border-radius: 50%; width: 28px; height: 28px; color: var(--gold); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all 0.25s; flex-shrink: 0; }
   .review-nav:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
 
   .review-dots { display: flex; gap: 6px; }
-  .dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--border);
-    cursor: pointer;
-    transition: all 0.3s;
-  }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.3s; }
   .dot.active { background: var(--gold); transform: scale(1.4); }
 
   .gmb-link {
     display: flex; align-items: center; justify-content: center; gap: 6px;
-    margin-top: 16px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.25s;
-    padding: 8px;
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: var(--radius-sm);
+    margin-top: 16px; font-family: 'Josefin Sans', sans-serif; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--gold); text-decoration: none;
+    opacity: 0.7; transition: opacity 0.25s; padding: 8px;
+    border: 1px solid rgba(201,168,76,0.15); border-radius: var(--radius-sm);
   }
   .gmb-link:hover { opacity: 1; background: rgba(201,168,76,0.05); }
 
   /* ============ SOCIAL ============ */
-  .social-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 10px;
-  }
+  .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 10px; }
   .social-btn {
     display: flex; flex-direction: column; align-items: center; gap: 7px;
-    padding: 16px 8px 14px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    text-decoration: none;
-    transition: all 0.3s;
-    cursor: pointer;
-    backdrop-filter: blur(8px);
+    padding: 16px 8px 14px; background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: var(--radius); text-decoration: none; transition: all 0.3s;
+    cursor: pointer; backdrop-filter: blur(8px);
   }
-  .social-btn:hover {
-    border-color: rgba(201,168,76,0.45);
-    transform: translateY(-4px);
-    background: var(--card-hover);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
+  .social-btn:hover { border-color: rgba(201,168,76,0.45); transform: translateY(-4px); background: var(--card-hover); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
   .s-icon { font-size: 22px; }
-  .s-label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 9px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--text-dimmer);
-  }
+  .s-label { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dimmer); }
 
   /* ============ MODAL ============ */
   .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(4,2,15,0.88);
-    z-index: 200;
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    backdrop-filter: blur(6px);
+    position: fixed; inset: 0; background: rgba(4,2,15,0.88); z-index: 200;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(6px);
   }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
   .modal {
     background: linear-gradient(145deg, #140b2e, #0d0825);
-    border: 1px solid rgba(201,168,76,0.35);
-    border-radius: 12px;
-    padding: 32px 24px 24px;
-    width: 100%; max-width: 400px;
-    max-height: 90vh; overflow-y: auto;
-    position: relative;
+    border: 1px solid rgba(201,168,76,0.35); border-radius: 12px;
+    padding: 32px 24px 24px; width: 100%; max-width: 400px;
+    max-height: 90vh; overflow-y: auto; position: relative;
     transform: scale(0.92) translateY(20px);
     transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
     box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,168,76,0.1);
   }
   .modal-overlay.open .modal { transform: scale(1) translateY(0); }
 
-  .modal-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 19px;
-    color: var(--gold-light);
-    text-align: center;
-    margin-bottom: 5px;
-  }
-  .modal-sub {
-    font-size: 14px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-bottom: 22px;
-    font-style: italic;
-  }
-  .modal-close {
-    position: absolute; top: 14px; right: 16px;
-    background: transparent; border: none;
-    color: var(--text-dimmer); font-size: 22px; cursor: pointer;
-    width: 30px; height: 30px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    transition: all 0.2s;
-  }
+  .modal-title { font-family: 'Cinzel Decorative', serif; font-size: 19px; color: var(--gold-light); text-align: center; margin-bottom: 5px; }
+  .modal-sub { font-size: 14px; color: var(--text-dim); text-align: center; margin-bottom: 22px; font-style: italic; }
+  .modal-close { position: absolute; top: 14px; right: 16px; background: transparent; border: none; color: var(--text-dimmer); font-size: 22px; cursor: pointer; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.2s; }
   .modal-close:hover { color: var(--gold); background: rgba(201,168,76,0.1); }
 
-  .service-select {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-    margin-bottom: 20px;
-  }
-  .svc-option {
-    padding: 10px 8px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text-dimmer);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.25s;
-  }
-  .svc-option.sel {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: rgba(201,168,76,0.1);
-  }
+  .service-select { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+  .svc-option { padding: 10px 8px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-dimmer); font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; text-align: center; transition: all 0.25s; }
+  .svc-option.sel { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.1); }
   .svc-option:hover:not(.sel) { border-color: rgba(201,168,76,0.35); color: var(--text-dim); }
+
+  .form-group { margin-bottom: 13px; }
+  .form-label { display: block; font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; opacity: 0.8; }
+  .form-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text); font-family: 'Cormorant Garamond', serif; font-size: 15px; outline: none; transition: border-color 0.25s, background 0.25s; }
+  .form-input:focus { border-color: rgba(201,168,76,0.55); background: rgba(201,168,76,0.04); }
+  .form-input::placeholder { color: var(--text-dimmer); }
+
+  .tool-btn { width: 100%; padding: 13px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.45); border-radius: var(--radius-sm); color: var(--gold-light); font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; cursor: pointer; transition: all 0.25s; margin-top: 4px; }
+  .tool-btn:hover { background: rgba(201,168,76,0.22); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,168,76,0.2); }
 
   .modal-footer { margin-top: 16px; font-size: 12px; color: var(--text-dimmer); text-align: center; font-style: italic; }
 
   /* ============ FLOATING WHATSAPP ============ */
-  .wa-float {
-    position: fixed;
-    bottom: 24px; right: 20px;
-    z-index: 300;
-    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
-  }
-
-  .wa-tooltip {
-    background: rgba(20,10,50,0.95);
-    border: 1px solid rgba(37,211,102,0.35);
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: #7de8a4;
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateY(6px) scale(0.95);
-    transition: all 0.3s;
-    pointer-events: none;
-    backdrop-filter: blur(8px);
-  }
+  .wa-float { position: fixed; bottom: 24px; right: 20px; z-index: 300; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .wa-tooltip { background: rgba(20,10,50,0.95); border: 1px solid rgba(37,211,102,0.35); border-radius: 8px; padding: 8px 14px; font-family: 'Josefin Sans', sans-serif; font-size: 11px; letter-spacing: 1px; color: #7de8a4; white-space: nowrap; opacity: 0; transform: translateY(6px) scale(0.95); transition: all 0.3s; pointer-events: none; backdrop-filter: blur(8px); }
   .wa-float:hover .wa-tooltip { opacity: 1; transform: translateY(0) scale(1); }
-
-  .wa-btn {
-    width: 58px; height: 58px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #25d366, #128c3e);
-    display: flex; align-items: center; justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 6px 24px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.4);
-    transition: all 0.3s;
-    animation: waBounce 3s ease infinite 2s;
-    position: relative;
-  }
-  .wa-btn::before {
-    content: '';
-    position: absolute; inset: -4px;
-    border-radius: 50%;
-    border: 2px solid rgba(37,211,102,0.3);
-    animation: waRing 2s ease-in-out infinite;
-  }
-  .wa-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 36px rgba(37,211,102,0.6);
-    animation: none;
-  }
+  .wa-btn { width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #25d366, #128c3e); display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 6px 24px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.4); transition: all 0.3s; animation: waBounce 3s ease infinite 2s; position: relative; }
+  .wa-btn::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(37,211,102,0.3); animation: waRing 2s ease-in-out infinite; }
+  .wa-btn:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(37,211,102,0.6); animation: none; }
   .wa-icon { font-size: 28px; line-height: 1; }
 
   /* ============ FOOTER ============ */
-  .footer {
-    text-align: center;
-    margin-top: 36px;
-    padding-top: 22px;
-    border-top: 1px solid rgba(201,168,76,0.12);
-  }
-  .footer-name {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 13px;
-    color: var(--gold);
-    opacity: 0.55;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-  }
-  .footer-copy {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: var(--text-dimmer);
-    opacity: 0.6;
-    line-height: 1.8;
-  }
+  .footer { text-align: center; margin-top: 36px; padding-top: 22px; border-top: 1px solid rgba(201,168,76,0.12); }
+  .footer-name { font-family: 'Cinzel Decorative', serif; font-size: 13px; color: var(--gold); opacity: 0.55; letter-spacing: 1px; margin-bottom: 5px; }
+  .footer-copy { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 1px; color: var(--text-dimmer); opacity: 0.6; line-height: 1.8; }
 
   /* ============ ANIMATIONS ============ */
-  @keyframes glowPulse {
-    0%,100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-  }
+  @keyframes glowPulse { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
   @keyframes spin { to { transform: rotate(360deg); } }
-  @keyframes shimmer {
-    0%,100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-  @keyframes sweep {
-    0% { left: -150%; }
-    100% { left: 250%; }
-  }
-  @keyframes livePulse {
-    0%,100% { opacity: 1; box-shadow: 0 0 8px #6de89a; }
-    50% { opacity: 0.5; box-shadow: 0 0 4px #6de89a; }
-  }
-  @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes waBounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-  @keyframes waRing {
-    0% { transform: scale(1); opacity: 0.6; }
-    100% { transform: scale(1.5); opacity: 0; }
-  }
-  @keyframes pageIn {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @keyframes sweep { 0% { left: -150%; } 100% { left: 250%; } }
+  @keyframes livePulse { 0%,100% { opacity: 1; box-shadow: 0 0 8px #6de89a; } 50% { opacity: 0.5; box-shadow: 0 0 4px #6de89a; } }
+  @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes waBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes waRing { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
+  @keyframes pageIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
   .anim { animation: pageIn 0.6s ease both; }
 
-  /* Scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--deep); }
   ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 10px; }
@@ -1062,143 +564,61 @@
     <div class="divider-line"></div>
   </div>
 
-  <!-- ===== FREE TOOLS ===== -->
+  <!-- ===== FREE MYSTICAL TOOLS ===== -->
   <div class="anim" style="animation-delay:0.3s">
     <div class="section-label">✦ Free Mystical Tools ✦</div>
-    <div class="tool-panel">
-      <div class="tool-tabs">
-        <button class="tool-tab active" onclick="switchTool('match',this)">💑 Match</button>
-        <button class="tool-tab" onclick="switchTool('name',this)">🔤 Name</button>
-        <button class="tool-tab" onclick="switchTool('tarot',this)">🃏 Tarot</button>
-        <button class="tool-tab" onclick="switchTool('num',this)">🔢 Number</button>
-      </div>
-      <div class="tool-content">
+    <div class="tools-grid">
 
-        <!-- MATCHMAKING -->
-        <div class="tool-form active" id="tool-match">
-          <div class="tool-title">🌹 Free Matchmaking</div>
-          <div class="tool-desc">Discover your cosmic compatibility</div>
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input class="form-input" type="text" id="m-name1" placeholder="Enter your full name">
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Your DOB</label>
-              <input class="form-input" type="date" id="m-dob1">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Zodiac</label>
-              <select class="form-input" id="m-sign1">
-                <option value="">Select</option>
-                <option>Aries ♈</option><option>Taurus ♉</option><option>Gemini ♊</option>
-                <option>Cancer ♋</option><option>Leo ♌</option><option>Virgo ♍</option>
-                <option>Libra ♎</option><option>Scorpio ♏</option><option>Sagittarius ♐</option>
-                <option>Capricorn ♑</option><option>Aquarius ♒</option><option>Pisces ♓</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Partner's Name</label>
-            <input class="form-input" type="text" id="m-name2" placeholder="Partner's full name">
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Partner DOB</label>
-              <input class="form-input" type="date" id="m-dob2">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Partner Zodiac</label>
-              <select class="form-input" id="m-sign2">
-                <option value="">Select</option>
-                <option>Aries ♈</option><option>Taurus ♉</option><option>Gemini ♊</option>
-                <option>Cancer ♋</option><option>Leo ♌</option><option>Virgo ♍</option>
-                <option>Libra ♎</option><option>Scorpio ♏</option><option>Sagittarius ♐</option>
-                <option>Capricorn ♑</option><option>Aquarius ♒</option><option>Pisces ♓</option>
-              </select>
-            </div>
-          </div>
-          <button class="tool-btn" onclick="calcMatch()">✨ Reveal Compatibility</button>
-          <div class="tool-result" id="res-match">
-            <div class="result-headline" id="match-title">Cosmic Compatibility</div>
-            <span class="result-number" id="match-score"></span>
-            <div class="compat-meter"><div class="compat-fill" id="match-bar" style="width:0%"></div></div>
-            <div class="compat-label"><span>Challenging</span><span>Twin Flames</span></div>
-            <div class="result-text" id="match-text"></div>
-          </div>
+      <a href="https://crystal-suggestion-numerology.vercel.app/" target="_blank" class="tool-card">
+        <div class="tool-card-icon">💎</div>
+        <div class="tool-card-body">
+          <div class="tool-card-name">Crystal Suggestion</div>
+          <div class="tool-card-desc">Find your perfect healing crystal by numerology</div>
+          <div class="tool-free-badge">✦ Free Tool</div>
         </div>
+        <span class="tool-card-arrow">→</span>
+      </a>
 
-        <!-- NAME ANALYSIS -->
-        <div class="tool-form" id="tool-name">
-          <div class="tool-title">🔤 Name Analysis</div>
-          <div class="tool-desc">Numerological power of your name</div>
-          <div class="form-group">
-            <label class="form-label">Full Name</label>
-            <input class="form-input" type="text" id="na-name" placeholder="Enter your full name">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Date of Birth</label>
-            <input class="form-input" type="date" id="na-dob">
-          </div>
-          <button class="tool-btn" onclick="calcName()">🔮 Analyse My Name</button>
-          <div class="tool-result" id="res-name">
-            <div class="result-headline">Your Name Vibration</div>
-            <span class="result-number" id="name-num"></span>
-            <div class="result-text" id="name-text"></div>
-          </div>
+      <a href="https://name-vibration-and-lucky-number.vercel.app/" target="_blank" class="tool-card">
+        <div class="tool-card-icon">🔤</div>
+        <div class="tool-card-body">
+          <div class="tool-card-name">Name Analysis &amp; Lucky Number</div>
+          <div class="tool-card-desc">Discover the vibrational power hidden in your name</div>
+          <div class="tool-free-badge">✦ Free Tool</div>
         </div>
+        <span class="tool-card-arrow">→</span>
+      </a>
 
-        <!-- TAROT DRAW -->
-        <div class="tool-form" id="tool-tarot">
-          <div class="tool-title">🃏 Daily Tarot Draw</div>
-          <div class="tool-desc">Focus on your question &amp; reveal your card</div>
-          <div class="form-group">
-            <label class="form-label">Your Question (optional)</label>
-            <input class="form-input" type="text" id="tarot-q" placeholder="What is on your mind?">
-          </div>
-          <button class="tool-btn" onclick="drawTarot()">🌙 Draw Your Card</button>
-          <div class="tool-result" id="res-tarot">
-            <div class="tarot-result">
-              <div class="result-headline" id="tarot-title"></div>
-              <div class="card-flip-wrap" onclick="flipCard()">
-                <div class="card-flip" id="tarot-card">
-                  <div class="card-face card-back">
-                    <div class="card-back-pattern"></div>
-                    🔮
-                  </div>
-                  <div class="card-face card-front">
-                    <span class="c-emoji" id="t-emoji">⭐</span>
-                    <span class="c-name" id="t-name">The Star</span>
-                  </div>
-                </div>
-              </div>
-              <div class="tap-hint">Tap card to reveal</div>
-              <div class="result-text" id="tarot-meaning" style="margin-top:12px; display:none"></div>
-            </div>
-          </div>
+      <a href="https://free-love-matchmaking.vercel.app/" target="_blank" class="tool-card">
+        <div class="tool-card-icon">💑</div>
+        <div class="tool-card-body">
+          <div class="tool-card-name">Free Love Matchmaking</div>
+          <div class="tool-card-desc">Reveal your cosmic compatibility with your partner</div>
+          <div class="tool-free-badge">✦ Free Tool</div>
         </div>
+        <span class="tool-card-arrow">→</span>
+      </a>
 
-        <!-- NUMEROLOGY -->
-        <div class="tool-form" id="tool-num">
-          <div class="tool-title">🔢 Life Path Number</div>
-          <div class="tool-desc">Discover your soul's journey number</div>
-          <div class="form-group">
-            <label class="form-label">Full Name</label>
-            <input class="form-input" type="text" id="lp-name" placeholder="Your full name">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Date of Birth</label>
-            <input class="form-input" type="date" id="lp-dob">
-          </div>
-          <button class="tool-btn" onclick="calcLifePath()">🌟 Calculate Life Path</button>
-          <div class="tool-result" id="res-num">
-            <div class="result-headline">Your Life Path Number</div>
-            <span class="result-number" id="lp-num"></span>
-            <div class="result-text" id="lp-text"></div>
-          </div>
+      <a href="https://free-vedic-numerology-calculator.vercel.app/" target="_blank" class="tool-card">
+        <div class="tool-card-icon">🔢</div>
+        <div class="tool-card-body">
+          <div class="tool-card-name">Vedic Numerology Calculator</div>
+          <div class="tool-card-desc">Calculate your life path through ancient Vedic wisdom</div>
+          <div class="tool-free-badge">✦ Free Tool</div>
         </div>
+        <span class="tool-card-arrow">→</span>
+      </a>
 
-      </div>
+      <a href="https://crystal-suggestion-as-per-rashi.vercel.app/" target="_blank" class="tool-card">
+        <div class="tool-card-icon">♈</div>
+        <div class="tool-card-body">
+          <div class="tool-card-name">Crystal by Rashi</div>
+          <div class="tool-card-desc">Get crystal recommendations based on your zodiac sign</div>
+          <div class="tool-free-badge">✦ Free Tool</div>
+        </div>
+        <span class="tool-card-arrow">→</span>
+      </a>
+
     </div>
   </div>
 
@@ -1208,7 +628,7 @@
     <div class="divider-line"></div>
   </div>
 
-  <!-- ===== GOOGLE REVIEWS (Featurable) ===== -->
+  <!-- ===== GOOGLE REVIEWS ===== -->
   <div class="anim" style="animation-delay:0.4s">
     <div class="section-label">✦ What Clients Say ✦</div>
     <div class="review-embed-box">
@@ -1230,7 +650,7 @@
         <script src="https://featurable.com/assets/v2/grid_default.min.js" defer charset="UTF-8"></script>
       </div>
 
-      <!-- Fallback animated reviews (shown if widget hasn't loaded) -->
+      <!-- Fallback animated reviews -->
       <div class="review-carousel" id="review-carousel-fallback">
         <div class="reviews-track" id="reviews-track">
           <div class="review-item">
@@ -1372,7 +792,6 @@ track.parentElement.addEventListener('mouseleave', () => {
   autoPlay = setInterval(() => goReview(curReview + 1), 5000);
 });
 
-// Hide fallback carousel if Featurable widget loaded
 window.addEventListener('load', () => {
   const widget = document.getElementById('featurable-6383c159-93aa-4f0c-b833-d778fba0aa5a');
   if (widget && widget.children.length > 0) {
@@ -1380,153 +799,6 @@ window.addEventListener('load', () => {
     document.getElementById('review-controls').style.display = 'none';
   }
 });
-
-// ============ TOOL TABS ============
-function switchTool(id, btn) {
-  document.querySelectorAll('.tool-form').forEach(f => f.classList.remove('active'));
-  document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tool-' + id).classList.add('active');
-  if (btn) btn.classList.add('active');
-}
-
-// ============ NUMEROLOGY HELPERS ============
-const charMap = {a:1,b:2,c:3,d:4,e:5,f:8,g:3,h:5,i:1,j:1,k:2,l:3,m:4,n:5,o:7,p:8,q:1,r:2,s:3,t:4,u:6,v:6,w:6,x:5,y:1,z:7};
-
-function nameToNum(name) {
-  return name.toLowerCase().replace(/[^a-z]/g,'').split('').reduce((s,c) => s + (charMap[c] || 0), 0);
-}
-function dobToNum(d) {
-  if (!d) return 0;
-  return d.replace(/-/g,'').split('').reduce((s,c) => s + parseInt(c), 0);
-}
-function reduce(n) {
-  while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
-    n = String(n).split('').reduce((s,c) => s + parseInt(c), 0);
-  }
-  return n;
-}
-
-// ============ MATCHMAKING ============
-const compatMessages = [
-  {range:[85,100], title:"Twin Flames 🔥", msg:"An extraordinary cosmic bond. Your energies mirror each other beautifully — this is a rare, destined connection written in the stars."},
-  {range:[70,84], title:"Soulmates ✨", msg:"Deep mutual understanding and strong attraction. A powerful, loving relationship built on trust, harmony, and shared destiny."},
-  {range:[55,69], title:"Good Match 💛", msg:"Compatible with wonderful potential. With open communication and understanding, this relationship can flourish and deepen beautifully."},
-  {range:[40,54], title:"Moderate Match 🌙", msg:"Some differences exist, but love can overcome them. Patience, understanding, and compromise will be the sacred keys."},
-  {range:[0,39], title:"Challenging ⚡", msg:"Significant differences in energy exist. Not impossible, but requires deep work. Consult Himu for personalised guidance."},
-];
-
-function calcMatch() {
-  const n1 = document.getElementById('m-name1').value;
-  const n2 = document.getElementById('m-name2').value;
-  if (!n1 || !n2) { alert('Please enter both names'); return; }
-  const d1 = document.getElementById('m-dob1').value;
-  const d2 = document.getElementById('m-dob2').value;
-  const num1 = reduce(nameToNum(n1) + dobToNum(d1));
-  const num2 = reduce(nameToNum(n2) + dobToNum(d2));
-  const diff = Math.abs(num1 - num2);
-  const raw = Math.round(100 - (diff / 9) * 60 + (Math.random() * 15));
-  const score = Math.min(100, Math.max(20, raw));
-  const found = compatMessages.find(c => score >= c.range[0] && score <= c.range[1]);
-  document.getElementById('match-title').textContent = found.title;
-  document.getElementById('match-score').textContent = score + '%';
-  document.getElementById('match-text').textContent = found.msg;
-  const bar = document.getElementById('match-bar');
-  bar.style.width = '0%';
-  setTimeout(() => { bar.style.width = score + '%'; }, 100);
-  document.getElementById('res-match').classList.add('show');
-}
-
-// ============ NAME ANALYSIS ============
-const nameVibrations = {
-  1:"Leadership & Independence — You are a natural pioneer, destined to forge your own path with courage and vision.",
-  2:"Harmony & Partnership — Your soul seeks balance, cooperation, and deep emotional connections.",
-  3:"Creativity & Expression — A gifted communicator, you bring joy and inspiration wherever you go.",
-  4:"Stability & Foundation — Disciplined and dependable, you build lasting structures in life.",
-  5:"Freedom & Adventure — Change energises you. You thrive through exploration and new experiences.",
-  6:"Love & Responsibility — Nurturing by nature, you are the healer and caretaker of your circle.",
-  7:"Wisdom & Spirituality — A deep thinker and seeker of truth, the universe speaks through you.",
-  8:"Power & Abundance — Ambitious and magnetic, material success and leadership are your destiny.",
-  9:"Compassion & Completion — An old soul, you carry wisdom and grace from many lifetimes.",
-  11:"Master Intuitive — A spiritual messenger with heightened sensitivity and visionary gifts.",
-  22:"Master Builder — Rare potential to turn grand dreams into lasting, magnificent reality.",
-  33:"Master Teacher — Embodiment of compassion and healing on a truly global scale.",
-};
-
-function calcName() {
-  const name = document.getElementById('na-name').value;
-  if (!name) { alert('Please enter your name'); return; }
-  const dob = document.getElementById('na-dob').value;
-  const n = reduce(nameToNum(name) + dobToNum(dob));
-  document.getElementById('name-num').textContent = n;
-  document.getElementById('name-text').textContent = nameVibrations[n] || nameVibrations[reduce(n)];
-  document.getElementById('res-name').classList.add('show');
-}
-
-// ============ TAROT DRAW ============
-const tarotCards = [
-  {emoji:'☀️',name:'The Sun',meaning:'Radiant success, joy, and vitality surround you. A time of celebration and positive energy is at hand.'},
-  {emoji:'🌙',name:'The Moon',meaning:'Trust your intuition above all else. Hidden truths are being revealed. Navigate with your inner light.'},
-  {emoji:'⭐',name:'The Star',meaning:'Hope, healing, and divine guidance flow toward you. You are blessed and protected on your path.'},
-  {emoji:'⚡',name:'The Tower',meaning:'A sudden change brings transformation. Release what no longer serves — true liberation awaits.'},
-  {emoji:'🌍',name:'The World',meaning:'Completion, achievement, and wholeness. A great cycle is fulfilled. Celebrate how far you have come.'},
-  {emoji:'❤️',name:'The Lovers',meaning:'Deep connection, harmony, and meaningful choices. Follow your heart — divine alignment is near.'},
-  {emoji:'⚖️',name:'Justice',meaning:'Truth and balance prevail. Fair outcomes are coming. Act with integrity and trust the sacred process.'},
-  {emoji:'🐉',name:'Strength',meaning:'Inner courage and calm power are your greatest gifts. Face all challenges with grace and confidence.'},
-  {emoji:'🔮',name:'The High Priestess',meaning:'Divine feminine wisdom speaks. Pause, listen within, and trust what your soul already knows.'},
-  {emoji:'🌀',name:'The Wheel',meaning:'Fortunate cycles are turning in your favour. Embrace change — destiny is beautifully moving with you.'},
-  {emoji:'🦅',name:'The Hermit',meaning:'Solitude brings profound wisdom. Look within. The answers you seek live in the stillness of your silence.'},
-  {emoji:'🪄',name:'The Magician',meaning:'You have all the tools you need right now. Your power to manifest is at its peak — take bold action!'},
-];
-
-let drawnCard = null;
-function drawTarot() {
-  drawnCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
-  document.getElementById('t-emoji').textContent = drawnCard.emoji;
-  document.getElementById('t-name').textContent = drawnCard.name;
-  document.getElementById('tarot-title').textContent = 'Your Card Awaits…';
-  document.getElementById('tarot-meaning').style.display = 'none';
-  const card = document.getElementById('tarot-card');
-  card.classList.remove('flipped');
-  document.getElementById('res-tarot').classList.add('show');
-}
-
-function flipCard() {
-  if (!drawnCard) return;
-  const card = document.getElementById('tarot-card');
-  card.classList.toggle('flipped');
-  if (card.classList.contains('flipped')) {
-    document.getElementById('tarot-title').textContent = drawnCard.name;
-    const m = document.getElementById('tarot-meaning');
-    m.textContent = drawnCard.meaning;
-    m.style.display = 'block';
-  }
-}
-
-// ============ LIFE PATH ============
-const lifePathMeanings = {
-  1:"The Leader — Independent, pioneering, and self-reliant. Your path is to lead, innovate, and inspire.",
-  2:"The Peacemaker — Cooperative, diplomatic, and sensitive. Your gift is unity, harmony, and deep empathy.",
-  3:"The Creator — Expressive, joyful, and artistic. Your path shines brightest through creative expression.",
-  4:"The Builder — Practical, disciplined, and reliable. You create lasting foundations for yourself and others.",
-  5:"The Freedom Seeker — Adventurous, versatile, and dynamic. Change and exploration are your life's fuel.",
-  6:"The Nurturer — Loving, responsible, and caring. Your path is devoted service to family and community.",
-  7:"The Seeker — Analytical, spiritual, and introspective. Truth and wisdom are your life's great quest.",
-  8:"The Achiever — Ambitious, authoritative, and powerful. Material and spiritual mastery are your destiny.",
-  9:"The Humanitarian — Compassionate, wise, and giving. Your soul is here to serve the greater good.",
-  11:"Master Number 11 — A highly intuitive spiritual messenger. Enlightenment and vision are your sacred path.",
-  22:"Master Number 22 — The Master Builder with unlimited potential to create on a magnificent grand scale.",
-  33:"Master Number 33 — The Master Teacher whose boundless compassion can uplift all of humanity.",
-};
-
-function calcLifePath() {
-  const dob = document.getElementById('lp-dob').value;
-  const name = document.getElementById('lp-name').value;
-  if (!dob && !name) { alert('Please enter your details'); return; }
-  const lp = reduce(dobToNum(dob) + nameToNum(name));
-  document.getElementById('lp-num').textContent = lp;
-  document.getElementById('lp-text').textContent = lifePathMeanings[lp] || lifePathMeanings[reduce(lp)];
-  document.getElementById('res-num').classList.add('show');
-}
 
 // ============ MODAL ============
 function openModal(service) {
